@@ -14,5 +14,8 @@ export default defineConfig({
     // Access the Studio on your.url/admin
     studioBasePath: "/admin"
   }), react()],
-  adapter: netlify()
+  adapter: netlify(),
+  image: {
+    domains: ['cdn.sanity.io'],
+  },
 });
