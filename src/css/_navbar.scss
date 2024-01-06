@@ -1,0 +1,34 @@
+.navbar {
+  padding: 6px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 11;
+
+  .navbar-contain {
+    padding: 0 24px;
+    background-color: var(--bg-gray);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--br);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    img {
+      height: 24px;
+      display: inline-block;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+}

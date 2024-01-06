@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets'
+import Logo from '../images/needl-logo.svg'
+---
+
+<nav class='navbar'>
+  <div class='navbar-contain'>
+    <a href='/' class='logo'>
+      <Image src={Logo} alt='Needle.io logo' />
+    </a>
+
+    <ul class='nav-links'>
+      <li><a href='/about'>About us</a></li>
+      <li><a href='/'>Jobs</a></li>
+      <li><a href='/media'>Media</a></li>
+      <li><a href='/contact' class='button small'>Contact us</a></li>
+    </ul>
+  </div>
+</nav>

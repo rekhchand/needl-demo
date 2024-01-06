@@ -1,0 +1,19 @@
+---
+import { sanityClient } from 'sanity:client'
+
+const siteData = await sanityClient.fetch(`
+  *[_type == 'siteSettings']{
+    'image': image.asset,
+    'alt': image.alt
+  }[0]
+`)
+console.log(siteData)
+
+import Layout from '../components/Layout.astro'
+---
+
+<Layout title='Homepage' description='This is a homepage'>
+  <div class='wrapper'>
+    <h1>Hello world</h1>
+  </div>
+</Layout>

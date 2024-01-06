@@ -1,0 +1,39 @@
+{
+  "name": "needl",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^4.1.0",
+    "@astrojs/react": "^3.0.9",
+    "@sanity/astro": "^2.2.0",
+    "@sanity/vision": "^3.23.4",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "astro": "^4.1.1",
+    "astro-portabletext": "^0.9.6",
+    "gsap": "^3.12.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "sanity": "^3.23.4",
+    "sass": "^1.69.7",
+    "styled-components": "^6.1.6",
+    "swiper": "^11.0.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-astro": "^0.31.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "prettier": "^3.1.1",
+    "prettier-config-standard": "^7.0.0",
+    "prettier-plugin-astro": "^0.12.2"
+  }
+}

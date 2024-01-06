@@ -1,0 +1,25 @@
+---
+import Navbar from './Navbar.astro'
+import Footer from './Footer.astro'
+
+const { title, description } = Astro.props
+const altDesc = `Hey there 👋, my name is Ghanendra. I am a UX/UI designer focused on creating impactful Apps & Websites.`
+
+import '../css/style.scss'
+---
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+    <meta name='description' content={description || altDesc} />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>
