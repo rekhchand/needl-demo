@@ -1,4 +1,5 @@
 import { BsFiles, BsFileText, BsGear } from 'react-icons/bs';
+/* eslint-disable */
 
 const hiddenDocTypes = listItem => ![
   'homepage', 'siteSettings'

@@ -1,0 +1,14 @@
+{
+  "extends": ["wesbos", "next/core-web-vitals"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@", "./src"]],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
+  },
+  "rules": {
+    "react/prop-types": 0
+  }
+}

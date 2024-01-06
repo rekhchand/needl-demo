@@ -6,7 +6,7 @@
   --purple: #7954ff;
   --bg-gray: #f7f6f1;
 
-  --font-aeonik: 'Aeonik', sans-serif;
+  --font-aeonik: "Aeonik", sans-serif;
   --nav-height: 100px;
   --br: 20px;
   --br-button: 16px;
@@ -14,15 +14,15 @@
 }
 
 @font-face {
-  font-family: 'Aeonik';
-  src: url('../fonts/Aeonik-Medium.woff2') format('woff2');
+  font-family: "Aeonik";
+  src: url("../fonts/Aeonik-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Aeonik';
-  src: url('../fonts/Aeonik-Regular.woff2') format('woff2');
+  font-family: "Aeonik";
+  src: url("../fonts/Aeonik-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -49,8 +49,6 @@ body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  padding-top: var(--nav-height);
 }
 
 h1,
@@ -107,7 +105,9 @@ a {
   margin: 0 auto;
 }
 
-.hero-img {
-  width: 100%;
-  height: auto;
+.img-contain {
+  img {
+    width: 100%;
+    height: auto;
+  }
 }

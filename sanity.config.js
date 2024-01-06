@@ -1,24 +1,27 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
-import deskStructure from './deskStructure'
-import Favicon from './src/images/favicon.svg';
+import { defineConfig } from 'sanity';
+import { deskTool } from 'sanity/desk';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './sanity/schemas';
+import deskStructure from './sanity/deskStructure';
+import favicon from './sanity/favicon.svg';
 
 export default defineConfig({
   name: 'default',
-  title: 'Needl',
-  // basePath: '/admin',
-  icon: Favicon,
+  title: 'needl.io',
+  basePath: '/admin',
+  icon: favicon,
 
-  projectId: 'uqvx2o8i',
-  dataset: 'production',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
 
-  plugins: [deskTool({
-    structure: deskStructure
-  }), visionTool()],
+  plugins: [
+    deskTool({
+      structure: deskStructure,
+    }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
   },
-})
+});
