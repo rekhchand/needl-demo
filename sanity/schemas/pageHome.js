@@ -1,24 +1,34 @@
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+
 export default {
   name: 'homepage',
   title: 'Home page',
   type: 'document',
   fields: [
     {
-      name: 'heroTitle',
-      title: 'Hero title',
-      type: 'string',
-      validation: Rule => Rule.required(),
+      name: 'heroHome',
+      title: 'Hero section',
+      type: 'heroHome',
     },
     {
-      name: 'heroPara',
-      title: 'Hero paragraph',
-      type: 'text',
-      validation: Rule => Rule.required(),
+      name: 'aboutBlurb',
+      title: 'About section',
+      type: 'aboutBlurb',
+    },
+    {
+      name: 'services',
+      title: 'Services section',
+      type: 'services',
+    },
+    {
+      name: 'areas',
+      title: 'Areas section',
+      type: 'areas',
     },
     {
       name: 'seo',
-      title: 'SEO specific',
+      title: 'SEO settings',
       type: 'seo',
     },
-  ]
-}
+  ],
+};

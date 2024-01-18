@@ -1,0 +1,29 @@
+.news-sec {
+  .news-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .all-media {
+    margin-top: var(--gap-6);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-6) 8px;
+  }
+
+  .follow-us {
+    margin-top: var(--gap-6);
+    h3 {
+      font-size: 24px;
+    }
+
+    .follow-links {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+  }
+}

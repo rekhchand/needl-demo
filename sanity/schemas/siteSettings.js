@@ -1,18 +1,32 @@
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+
 export default {
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
   fields: [
     {
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-      validation: Rule => Rule.required(),
+      name: 'socials',
+      title: 'Social links',
+      type: 'array',
+      of: [{ type: 'socialCard' }],
     },
     {
-      name: 'image',
-      title: 'Test Image',
-      type: 'figure',
+      name: 'logos',
+      title: 'Logos section',
+      type: 'array',
+      of: [{ type: 'logoCard' }],
     },
-  ]
-}
+    {
+      name: 'testimonials',
+      title: 'Testimonials',
+      type: 'array',
+      of: [{ type: 'reviewCard' }],
+    },
+    {
+      name: 'ctaBox',
+      title: 'CTA box',
+      type: 'ctaBox',
+    },
+  ],
+};

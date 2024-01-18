@@ -1,3 +1,5 @@
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+
 export default {
   name: 'seo',
   title: 'SEO',
@@ -8,7 +10,7 @@ export default {
       title: 'Meta title',
       type: 'string',
       description: 'e.g. "Needl.io | Recruitment, done better"',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'description',
@@ -19,8 +21,9 @@ export default {
     {
       name: 'ogImage',
       title: 'Picture',
-      description: 'for og:image, the thumbnail image for specific page (we have a default one, so not necessary)',
+      description:
+        'for og:image, the thumbnail image for specific page (we have a default one, so not necessary)',
       type: 'image',
     },
   ],
-}
+};

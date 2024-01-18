@@ -1,0 +1,42 @@
+.hero {
+  margin-top: var(--nav-height);
+  min-height: 50vw;
+  display: flex;
+  position: relative;
+
+  .wrapper {
+    align-self: center;
+    padding-bottom: 40px;
+  }
+
+  .hero-content {
+    width: 50%;
+    max-width: 480px;
+
+    h1 {
+      margin-left: -4px;
+    }
+    .hero-para {
+      margin-top: 24px;
+      font-size: 22px;
+      line-height: 1.4;
+    }
+    .button,
+    button {
+      margin-top: 32px;
+    }
+  }
+
+  .hero-graphic {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: var(--br);
+    overflow: hidden;
+    background-color: var(--bg-gray);
+
+    height: auto;
+    width: 50%;
+    aspect-ratio: 1/1;
+  }
+}

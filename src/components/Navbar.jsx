@@ -6,15 +6,16 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-contain">
         <a href="/" className="logo">
-          <Image src={Logo} alt="Needl.io logo" />
+          <Image src={Logo} alt="Needl.io logo" priority />
         </a>
-
         <ul className="nav-links">
           <li>
             <a href="/about">About us</a>
           </li>
           <li>
-            <a href="/">Jobs</a>
+            <a href="/">
+              Jobs <span className="hiring-tag">Hiring</span>
+            </a>
           </li>
           <li>
             <a href="/media">Media</a>

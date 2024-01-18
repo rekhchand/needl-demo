@@ -1,0 +1,47 @@
+.cta-box {
+  margin-top: var(--gap-big-2);
+  padding: 100px 120px;
+  background-color: var(--purple);
+  color: var(--white);
+  border-radius: var(--br);
+  overflow: hidden;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 40px;
+
+  .cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    background-image: url("../images/needl-patterns.svg");
+    opacity: 0.5;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+
+    button,
+    .button {
+      margin-top: 32px;
+    }
+  }
+
+  .cta-image {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    img {
+      max-height: 230px;
+      width: auto;
+    }
+  }
+}
