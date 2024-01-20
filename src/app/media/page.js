@@ -1,6 +1,5 @@
 import Layout from '@/components/Layout';
 import Hero from '@/components/Hero';
-import MediaSec from '@/components/media/MediaSec';
 import '@/css/media/mediapage.scss';
 
 export const metadata = {
@@ -19,7 +18,6 @@ export default function Media() {
           title="Media"
           sub="Our team have extensive networks and are active within the tech community hosting multiple podcast series, meetups and events. Some events are less serious than others!"
         />
-        <MediaSec />
       </main>
     </Layout>
   );
