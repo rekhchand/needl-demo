@@ -1,0 +1,30 @@
+#cursor {
+  height: 12px;
+  width: 12px;
+  pointer-events: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+
+  @media only screen and (hover: none) {
+    display: none;
+  }
+
+  .cursor-inner {
+    height: 100%;
+    width: 100%;
+    background-color: var(--green);
+    border-radius: 40px;
+    transition: 0.3s ease-out;
+    opacity: 0; // body:hover .cursor .cursor-inner {opacity: 0.8}
+  }
+
+  &.pointer .cursor-inner {
+    transform: scale(3.5);
+  }
+}
+body:hover #cursor .cursor-inner {
+  opacity: 0.8;
+}

@@ -39,4 +39,41 @@
     width: 50%;
     aspect-ratio: 1/1;
   }
+
+  .hero-graphic-content {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+
+    .follow-elem {
+      height: 40px;
+      width: 40px;
+      background-color: var(--green);
+      border-radius: 40px;
+      opacity: 0.85;
+
+      position: absolute;
+      top: 200px;
+      left: 200px;
+    }
+
+    .needle {
+      // height: 20px;
+      // width: 8px;
+      // border-radius: 2px;
+      // background-color: var(--black);
+      height: 0;
+      width: 3px;
+      border-bottom: 18px solid #888;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      border-radius: 2px;
+      // transition: transform 0.2s ease-out;
+      will-change: transform;
+    }
+  }
 }

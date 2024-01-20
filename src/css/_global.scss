@@ -257,3 +257,12 @@ main {
     transform: translateX(50%);
   }
 }
+
+@media (min-width: 1760px) {
+  .wrapper {
+    width: 100%;
+    padding: 0;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}

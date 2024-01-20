@@ -1,6 +1,15 @@
+'use client';
+
+import { useEffect } from 'react';
+import { generateLines, directionTowardsElem } from '@/utils/helpers';
 import Button from '../Button';
 
 export default function HeroHome({ heroContent }) {
+  useEffect(() => {
+    generateLines();
+    directionTowardsElem();
+  }, []);
+
   return (
     <div className="hero hero-home">
       <div className="wrapper">
@@ -11,8 +20,10 @@ export default function HeroHome({ heroContent }) {
         </div>
       </div>
 
-      <div className="hero-graphic">
-        <div className="hero-graphic-content" />
+      <div className="hero-graphic" data-cursor="pointer">
+        <div className="hero-graphic-content">
+          {/* <div className="follow-elem" /> */}
+        </div>
       </div>
     </div>
   );
