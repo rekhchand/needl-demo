@@ -22,7 +22,7 @@ export default function HeroHome({ heroContent }) {
 
       <div className="hero-graphic" data-cursor="pointer">
         <div className="hero-graphic-content">
-          {/* <div className="follow-elem" /> */}
+          <div className="follow-elem" />
         </div>
       </div>
     </div>
