@@ -1,0 +1,14 @@
+.gallery-sec {
+  border-radius: var(--br);
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2/1;
+
+  img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

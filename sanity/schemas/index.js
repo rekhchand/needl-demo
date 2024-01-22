@@ -1,6 +1,7 @@
 import media from './media';
 import member from './member';
 import pageHome from './pageHome';
+import pageAbout from './pageAbout';
 import siteSettings from './siteSettings';
 
 import seo from './objects/seo';
@@ -14,16 +15,23 @@ import socialCard from './objects/socialCard';
 import logoCard from './objects/logoCard';
 import ctaBox from './objects/ctaBox';
 import reviewCard from './objects/reviewCard';
+import memberSocials from './objects/memberSocials';
+import valueCard from './objects/valueCard';
 
 import heroHome from './home/heroHome';
 import aboutBlurb from './home/aboutBlurb';
 import services from './home/services';
 import areas from './home/areas';
+import teamHome from './home/teamHome';
+
+import heroAbout from './about/heroAbout';
+import values from './about/values';
 
 export const schemaTypes = [
   media,
   member,
   pageHome,
+  pageAbout,
   siteSettings,
 
   seo,
@@ -37,9 +45,15 @@ export const schemaTypes = [
   logoCard,
   ctaBox,
   reviewCard,
+  memberSocials,
+  valueCard,
 
   heroHome,
   aboutBlurb,
   services,
   areas,
+  teamHome,
+
+  heroAbout,
+  values,
 ];

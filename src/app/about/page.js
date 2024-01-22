@@ -1,29 +1,77 @@
+import { groq } from 'next-sanity';
+import { client } from '@/utils/sanityClient';
 import Layout from '@/components/Layout';
-import Hero from '@/components/Hero';
+import HeroAbout from '@/components/about/HeroAbout';
+import ClientLogos from '@/components/ClientLogos';
+import Gallery from '@/components/about/Gallery';
 import Values from '@/components/about/Values';
+import Team from '@/components/Team';
+import Reviews from '@/components/Reviews';
+import CtaBox from '@/components/CtaBox';
 import '@/css/about/aboutpage.scss';
 
-export const metadata = {
-  title: 'About us | Needle.io',
-  description: 'Aboutpage description',
-  // openGraph: {
-  //   images: '/og-image.png',
-  // },
-};
+export default async function About() {
+  const aboutContent = await client.fetch(groq`
+  *[_type == 'aboutpage']{
+    heroAbout{
+      title,
+      para,
+      'image': image.asset
+    },
+    largeImage{
+      'image': asset,
+      alt
+    },
+    values{
+      title,
+      para,
+      allValues[]{
+        title,
+        'icon': icon.asset,
+        'rawTexts': details.blockText
+      }
+    },
+  }[0]`);
+  const siteData = await client.fetch(groq`
+  *[_type == 'siteSettings']{
+    testimonials
+  }[0]`);
+  const { heroAbout, largeImage, values } = aboutContent;
+  const { testimonials } = siteData;
 
-export default function Media() {
   return (
     <Layout>
-      <main>
-        <Hero
-          title="Who we are"
-          sub="We aim to be the go-to recruitment firm for indigenous tech startups and scale-ups as well for those organisations looking to build an EMEA base out of Ireland."
-        />
-        <Values
-          tag="Our values"
-          title="At the core of everything we do in line with our values"
-        />
+      <main className="main-about">
+        <HeroAbout heroContent={heroAbout} />
+        <ClientLogos />
+        <Gallery content={largeImage} />
+        <Values content={values} />
+        <Team title="Meet our All-Star team" noCta />
+        <Reviews allReviews={testimonials} />
+        <div className="wrapper">
+          <CtaBox />
+        </div>
       </main>
     </Layout>
   );
+}
+
+export async function generateMetadata() {
+  const aboutContent = await client.fetch(groq`
+  *[_type == 'aboutpage']{
+    seo{
+      title,
+      description,
+      'image': ogImage.asset->url
+    }
+  }[0]`);
+  const { seo } = aboutContent;
+
+  return {
+    title: seo?.title,
+    description: seo?.description,
+    openGraph: {
+      images: seo?.image || '/og-image.jpg',
+    },
+  };
 }

@@ -26,6 +26,11 @@ export default {
       type: 'areas',
     },
     {
+      name: 'teamHome',
+      title: 'Team members section',
+      type: 'teamHome',
+    },
+    {
       name: 'seo',
       title: 'SEO settings',
       type: 'seo',

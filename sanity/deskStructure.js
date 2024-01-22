@@ -2,7 +2,7 @@ import { BsFiles, BsFileText, BsGear } from 'react-icons/bs';
 /* eslint-disable */
 
 const hiddenDocTypes = listItem => ![
-  'homepage', 'siteSettings'
+  'homepage', 'aboutpage', 'siteSettings'
 ].includes(listItem.getId());
 
 export default (S) =>
@@ -24,6 +24,10 @@ export default (S) =>
               .title("Home page")
               .icon(BsFileText)
               .child(S.document().title("Home page").schemaType('homepage').id('homepage')),
+            S.listItem()
+              .title("About page")
+              .icon(BsFileText)
+              .child(S.document().title("About page").schemaType('aboutpage').id('aboutpage')),
           ])
         ),
 

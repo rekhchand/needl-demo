@@ -1,13 +1,37 @@
 .areas-sec {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 
   .areas-marquee {
-    display: flex;
+    width: 100%;
+    display: flex; // important
     flex-wrap: nowrap;
-    column-gap: 32px;
+    justify-content: flex-start;
+    overflow: hidden;
+
+    &.reverse {
+      justify-content: flex-end;
+      .all-areas {
+        animation: marqueeReverse 45s linear infinite forwards;
+        animation-delay: -1s;
+      }
+    }
+  }
+
+  .all-areas {
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    will-change: transform;
+    animation: marquee 45s linear infinite forwards;
 
     .area {
       flex-shrink: 0;
+      margin-right: 32px;
       display: flex;
       align-items: center;
       column-gap: 16px;

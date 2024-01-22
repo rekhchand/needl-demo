@@ -1,0 +1,47 @@
+.hero-about {
+  min-height: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  .wrapper {
+    padding-bottom: 40px;
+  }
+
+  .hero-content {
+    width: 50%;
+    max-width: 480px;
+  }
+
+  .hero-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: var(--br);
+    overflow: hidden;
+
+    height: auto;
+    width: 50%;
+    aspect-ratio: 1/1;
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 770px) {
+      .hero-content {
+        width: 100%;
+      }
+      .hero-image {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ import WhoSec from '@/components/home/WhoSec';
 import Services from '@/components/home/Services';
 import Areas from '@/components/home/Areas';
 import Reviews from '@/components/Reviews';
+import Team from '@/components/Team';
 import NewsSec from '@/components/home/NewsSec';
 import '@/css/home/homepage.scss';
 
@@ -28,6 +29,7 @@ export default async function Home() {
       title,
       'icon': icon.asset
     },
+    teamHome,
     seo
   }[0]`);
   const siteData = await client.fetch(groq`
@@ -38,7 +40,7 @@ export default async function Home() {
     },
     testimonials
   }[0]`);
-  const { heroHome, aboutBlurb, services, areas } = homeContent;
+  const { heroHome, aboutBlurb, services, areas, teamHome } = homeContent;
   const { testimonials } = siteData;
 
   return (
@@ -50,6 +52,7 @@ export default async function Home() {
         <Services content={services} />
         <Areas content={areas} />
         <Reviews allReviews={testimonials} />
+        <Team title={teamHome.title} sub={teamHome.para} />
         <NewsSec />
       </main>
     </Layout>
@@ -71,7 +74,7 @@ export async function generateMetadata() {
     title: seo?.title,
     description: seo?.description,
     openGraph: {
-      images: seo?.image || '/og-image.png',
+      images: seo?.image || '/og-image.jpg',
     },
   };
 }
