@@ -12,11 +12,17 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'details',
-      title: 'Details',
-      type: 'blockWithList',
+      name: 'para',
+      title: 'Short info',
+      type: 'text',
       validation: (Rule) => Rule.required(),
     },
+    // {
+    //   name: 'details',
+    //   title: 'Details',
+    //   type: 'blockWithList',
+    //   validation: (Rule) => Rule.required(),
+    // },
     {
       name: 'icon',
       title: 'Icon',

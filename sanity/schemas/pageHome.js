@@ -31,6 +31,16 @@ export default {
       type: 'teamHome',
     },
     {
+      name: 'reviews',
+      title: 'Reviews section',
+      type: 'reviews',
+    },
+    {
+      name: 'news',
+      title: 'News section',
+      type: 'news',
+    },
+    {
       name: 'seo',
       title: 'SEO settings',
       type: 'seo',

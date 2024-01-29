@@ -6,15 +6,16 @@ export default {
   type: 'object',
   fields: [
     {
-      name: 'para',
-      title: 'About blurb',
-      type: 'text',
+      name: 'tag',
+      title: 'Section tag',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'image',
-      title: 'About image',
-      type: 'figure',
+      name: 'aboutText',
+      title: 'About text',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
     },
   ],
 };

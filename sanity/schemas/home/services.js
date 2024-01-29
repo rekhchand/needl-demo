@@ -6,15 +6,16 @@ export default {
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Section title',
+      name: 'tag',
+      title: 'Section tag',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'para',
-      title: 'Section paragraph',
-      type: 'text',
+      name: 'title',
+      title: 'Section title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'allServices',

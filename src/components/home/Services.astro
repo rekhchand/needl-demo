@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../../utils/urlForImage'
+const { content, areas } = Astro.props
+---
+
+<section class='services-sec sec-padding' id='what-we-do'>
+  <div class='wrapper-2'>
+    <div class='services-sec-heading main-grid'>
+      <div class='left-part'>
+        <span class='sec-tag'>{content.tag}</span>
+      </div>
+      <div class='heading-content'>
+        <h2>{content.title}</h2>
+      </div>
+    </div>
+
+    <div class='all-services'>
+      {
+        content.allServices.map((service, i) => (
+          <div class='service'>
+            <span class='service-num'>0{i + 1}</span>
+            <h3>{service.title}</h3>
+            <Image
+              src={urlForImage(service.icon).url()}
+              alt={service.title}
+              width={getImageDimensions(service.icon).width}
+              height={getImageDimensions(service.icon).height}
+            />
+            <p class='service-details'>{service.para}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class='specialise-div'>
+      <span class='sec-tag'>{areas.title}</span>
+
+      <div class='areas-marquee'>
+        <div class='all-areas'>
+          {
+            areas.allAreas.map((area) => (
+              <div class='area'>
+                <div class='icon'>
+                  <Image
+                    src={urlForImage(area.icon).url()}
+                    alt={area.title}
+                    width={getImageDimensions(area.icon).width}
+                    height={getImageDimensions(area.icon).height}
+                  />
+                </div>
+                <h3 class='h3-small'>{area.title}</h3>
+              </div>
+            ))
+          }
+          {
+            areas.allAreas.map((area) => (
+              <div class='area'>
+                <div class='icon'>
+                  <Image
+                    src={urlForImage(area.icon).url()}
+                    alt={area.title}
+                    width={getImageDimensions(area.icon).width}
+                    height={getImageDimensions(area.icon).height}
+                  />
+                </div>
+                <h3 class='h3-small'>{area.title}</h3>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

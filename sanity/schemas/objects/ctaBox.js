@@ -6,15 +6,15 @@ export default {
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'ctaTag',
+      title: 'Cta tag',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      name: 'title',
+      title: 'Title',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     },
   ],

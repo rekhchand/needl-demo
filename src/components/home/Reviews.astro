@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../../utils/urlForImage'
+
+const { content, allReviews } = Astro.props
+---
+
+<section class='reviews-sec sec-padding' id='reviews'>
+  <div class='wrapper-2'>
+    <div class='services-sec-heading main-grid'>
+      <div class='left-part'>
+        <span class='sec-tag'>{content.tag}</span>
+      </div>
+      <div class='heading-content'>
+        <h2>{content.title}</h2>
+      </div>
+    </div>
+
+    <div class='all-reviews'>
+      {
+        allReviews.map((review) => (
+          <div class='review-card'>
+            <p class='review-text'>{review.reviewText}</p>
+
+            <div class='reviewer-info'>
+              <Image
+                src={urlForImage(review.pic).url()}
+                alt={review.name}
+                width={getImageDimensions(review.pic).width}
+                height={getImageDimensions(review.pic).height}
+              />
+              <div class='reviewer-texts'>
+                <p class='name'>{review.name}</p>
+
+                <div class='reviewer-texts-group'>
+                  <p class='occu'>{review.occupation}</p>
+                  <span class='series-round'>{review.round}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class='review-swiper'>
+      <div class='swiper swiper-review'>
+        <div class='swiper-wrapper'>
+          {
+            allReviews.map((review) => (
+              <div class='swiper-slide review-card'>
+                <p class='review-text'>{review.reviewText}</p>
+                <div class='reviewer-info'>
+                  <Image
+                    src={urlForImage(review.pic).url()}
+                    alt={review.name}
+                    width={getImageDimensions(review.pic).width}
+                    height={getImageDimensions(review.pic).height}
+                  />
+                  <div class='reviewer-texts'>
+                    <p class='name'>{review.name}</p>
+                    <div class='reviewer-texts-group'>
+                      <p class='occu'>{review.occupation}</p>
+                      <span class='series-round'>{review.round}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/css'
+  import { register } from 'swiper/element/bundle'
+  register()
+
+  const reviewSwiper = new Swiper('.swiper-review', {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    grabCursor: true,
+    breakpoints: {
+      500: {
+        spaceBetween: 32
+      }
+    }
+  })
+  // document.addEventListener('astro:page-load', () => {
+
+  // })
+</script>

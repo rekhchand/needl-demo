@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../../utils/urlForImage'
+import IcoArticle from '../../images/ico-article.svg'
+import News1 from '../../images/news-scaling-success.svg'
+import News2 from '../../images/news-strategic-forecasting.svg'
+import News3 from '../../images/news-Navigating-the-Maze.svg'
+import News4 from '../../images/news-Unlocking-Success.svg'
+
+const { content } = Astro.props
+---
+
+<section class='news-sec'>
+  <div class='wrapper'>
+    <div class='news-sec-heading main-grid'>
+      <div class='left-part'>
+        <span class='sec-tag'>{content.tag}</span>
+      </div>
+      <div class='heading-content'>
+        <h2>{content.title}</h2>
+        <div class='cta-div'>
+          {
+            /* <a
+            href="https://www.linkedin.com/newsletters/no-bullsh-t-just-delivery-6874748425976467456/"
+            target="_blank"
+            class="button angle-arrow"
+          >
+            View blog
+          </a> */
+          }
+          <a
+            href='https://www.meetup.com/Dublin-Tech-Talks/'
+            target='_blank'
+            class='button angle-arrow'
+          >
+            Dublin tech talks
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class='all-news'>
+      <div class='swiper swiper-news'>
+        <div class='swiper-wrapper'>
+          <a
+            href='https://www.linkedin.com/pulse/scaling-success-gavin-fox-mtlae/?trackingId=Cwas16AlS0G75saVANKO5w%3D%3D'
+            target='_blank'
+            class='swiper-slide news'
+          >
+            <div class='thumb'>
+              <Image src={News1} alt='News' class='news-image' />
+              <div class='news-type'>
+                <Image src={IcoArticle} alt='article' />
+                Article
+              </div>
+            </div>
+            <h3 class='h3-small'>Scaling success</h3>
+          </a>
+          <a
+            href='https://www.linkedin.com/pulse/strategic-forecasting-navigating-2024-hiring-landscape-gavin-fox-8zgle/?trackingId=KkrkGyy5RKq3jsdCjE0kLA%3D%3D'
+            target='_blank'
+            class='swiper-slide news'
+          >
+            <div class='thumb'>
+              <Image src={News2} alt='News' class='news-image' />
+              <div class='news-type'>
+                <Image src={IcoArticle} alt='article' />
+                Article
+              </div>
+            </div>
+            <h3 class='h3-small'>
+              Strategic Forecasting Navigating the 2024 Hiring Landscape
+            </h3>
+          </a>
+          <a
+            href='https://www.linkedin.com/pulse/navigating-maze-strategies-effective-leadership-selection-fox-xp9qe/?trackingId=r5y6ZS5xTmOzRowFyVLq%2FA%3D%3D'
+            target='_blank'
+            class='swiper-slide news'
+          >
+            <div class='thumb'>
+              <Image src={News3} alt='News' class='news-image' />
+              <div class='news-type'>
+                <Image src={IcoArticle} alt='article' />
+                Article
+              </div>
+            </div>
+            <h3 class='h3-small'>
+              Navigating the Maze: Strategies for Effective Leadership Selection
+              and Diversity Recruitment
+            </h3>
+          </a>
+          <a
+            href='https://www.linkedin.com/pulse/unlocking-success-okrs-comprehensive-guide-gavin-fox-cy6gf/?trackingId=pczZSI4kQIK2b12E52WZLw%3D%3D'
+            target='_blank'
+            class='swiper-slide news'
+          >
+            <div class='thumb'>
+              <Image src={News4} alt='News' class='news-image' />
+              <div class='news-type'>
+                <Image src={IcoArticle} alt='article' />
+                Article
+              </div>
+            </div>
+            <h3 class='h3-small'>
+              Unlocking Success with OKRs: A Comprehensive Guide
+            </h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/css'
+  import { register } from 'swiper/element/bundle'
+  register()
+
+  const newsSwiper = new Swiper('.swiper-news', {
+    slidesPerView: 'auto',
+    spaceBetween: 32,
+    grabCursor: true
+  })
+</script>

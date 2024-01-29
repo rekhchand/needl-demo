@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets'
+
+import Logo from '../images/needl-logo.svg'
+import Icon from '../images/needl-icon.svg'
+import Menu from '../images/ico-menu.svg'
+---
+
+<nav class='navbar-top'>
+  <div class='nav-top-wrapper'>
+    <a href='/' class='logo'>
+      <Image src={Logo} alt='Needl.io logo' />
+    </a>
+    <div class='menu-right'>
+      <a
+        href='https://calendly.com/gavin-fox-mm/15min'
+        target='_blank'
+        class='button small'
+      >
+        Book a call
+      </a>
+      <div class='menu-btn'>
+        <Image src={Menu} alt='menu' />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class='navbar'>
+  <div class='navbar-wrapper'>
+    <ul class='nav-main'>
+      <li class='when-scrolled w-logo'>
+        <a href='/' class='logo-icon'>
+          <Image src={Icon} alt='Needl.io icon' />
+        </a>
+      </li>
+      <li>
+        <a href='/#why-needl'>Why Needl</a>
+      </li>
+      <li>
+        <a href='/#what-we-do'>What we do</a>
+      </li>
+      <li>
+        <a href='/#team'>Meet the team</a>
+      </li>
+      <li class='hide-1'>
+        <a href='/#reviews'>Our clients</a>
+      </li>
+      <li class='when-scrolled w-button'>
+        <a
+          href='https://calendly.com/gavin-fox-mm/15min'
+          target='_blank'
+          class='button small'
+        >
+          Book a call
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  import { scrollNav } from '../utils/helpers'
+
+  scrollNav()
+</script>

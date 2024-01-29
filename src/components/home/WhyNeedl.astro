@@ -1,0 +1,16 @@
+---
+const { content } = Astro.props
+---
+
+<section class='why-sec' id='why-needl'>
+  <div class='wrapper'>
+    <div class='why-sec-contain main-grid'>
+      <div class='left-part'>
+        <span class='sec-tag'>{content.tag}</span>
+      </div>
+      <div class='why-sec-content'>
+        <h2>{content.aboutText}</h2>
+      </div>
+    </div>
+  </div>
+</section>

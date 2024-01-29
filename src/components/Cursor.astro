@@ -1,0 +1,52 @@
+<div id='cursor'>
+  <div class='cursor-inner'></div>
+</div>
+
+<script>
+  const cursorEl = document.querySelector('#cursor')
+  const touch = matchMedia('(hover: none), (pointer: coarse)').matches
+
+  if (touch) {
+    cursorEl.style.opacity = 0
+  } else cursorEl.style.opacity = 1
+
+  if (!touch) {
+    const cursor = cursorEl
+    const mouse = { x: -100, y: -100 }
+    const pos = { x: 0, y: 0 }
+    const speed = 0.15
+
+    const updateCoordinates = (e) => {
+      mouse.x = e.clientX - cursor.offsetWidth / 2
+      mouse.y = e.clientY - cursor.offsetHeight / 2
+    }
+
+    window.addEventListener('mousemove', updateCoordinates)
+
+    const updatePosition = () => {
+      pos.x += (mouse.x - pos.x) * speed
+      pos.y += (mouse.y - pos.y) * speed
+      cursor.style.transform = `translate3d(${pos.x}px ,${pos.y}px, 0)`
+    }
+
+    /* eslint-disable */
+    function loop() {
+      updatePosition()
+      requestAnimationFrame(loop)
+    }
+    /* eslint-enable */
+
+    requestAnimationFrame(loop)
+
+    // Case 1: change cursors
+    const pointerCursor = document.querySelectorAll('[data-cursor="pointer"]')
+    pointerCursor.forEach((element) => {
+      element.addEventListener('mouseenter', () => {
+        cursor.classList.add('pointer')
+      })
+      element.addEventListener('mouseleave', () => {
+        cursor.classList.remove('pointer')
+      })
+    })
+  }
+</script>

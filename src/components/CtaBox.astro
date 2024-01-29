@@ -1,0 +1,38 @@
+<div class='cta-box sec-padding'>
+  <div class='wrapper-2'>
+    <div class='cta-contain main-grid'>
+      <div class='left'>
+        <span class='sec-tag'>Talk to us</span>
+      </div>
+
+      <div class='cta-content'>
+        <h2>Ready to scale your team?</h2>
+        <div class='cta-div'>
+          <a
+            href='https://calendly.com/gavin-fox-mm/15min'
+            target='_blank'
+            class='button'
+          >
+            Book a Call
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='cta-graphic' data-cursor='pointer'>
+    <div class='cta-graphic-content'>
+      <div class='follow-elem'></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { directionTowardsElem, generateLines } from '../utils/helpers'
+
+  const lineParent = document.querySelector('.cta-graphic')
+  const lineWrap = lineParent.querySelector('.cta-graphic-content')
+  generateLines(lineParent, lineWrap)
+
+  directionTowardsElem(lineParent)
+</script>

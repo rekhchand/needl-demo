@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets'
+
+const { heroContent } = Astro.props
+import ButtonIco from '../../images/ico-button.svg'
+---
+
+<div class='hero-home'>
+  <div class='wrapper'>
+    <div class='hero-content'>
+      <h1>{heroContent.title}</h1>
+      <p class='sub'>{heroContent.para}</p>
+      <a
+        href='https://calendly.com/gavin-fox-mm/15min'
+        target='_blank'
+        class='button-special'
+      >
+        <span class='button-text'>Book a Call</span>
+        <div class='button-ico'>
+          <Image src={ButtonIco} alt='Arrow' class='button-ico' />
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class='hero-graphics'>
+    <div class='hero-graphic hero-graphic-1' data-cursor='pointer'>
+      <div class='hero-graphic-content'>
+        <div class='follow-elem'></div>
+      </div>
+    </div>
+    <div class='hero-graphic hero-graphic-2' data-cursor='pointer'>
+      <div class='hero-graphic-content'>
+        <div class='follow-elem'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { directionTowardsElem, generateLines } from '../../utils/helpers'
+
+  const lineParent1 = document.querySelector('.hero-graphic-1')
+  const lineParent2 = document.querySelector('.hero-graphic-2')
+  const lineWrap1 = lineParent1.querySelector('.hero-graphic-content')
+  const lineWrap2 = lineParent2.querySelector('.hero-graphic-content')
+  generateLines(lineParent1, lineWrap1)
+  generateLines(lineParent2, lineWrap2)
+
+  directionTowardsElem(lineParent1)
+  directionTowardsElem(lineParent2)
+</script>

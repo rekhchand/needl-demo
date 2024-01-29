@@ -1,54 +1,165 @@
+.navbar-top {
+  width: 100%;
+  padding: 16px 0;
+
+  .nav-top-wrapper {
+    padding: 0 64px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .logo {
+      img {
+        display: block;
+        height: 24px;
+        width: auto;
+      }
+    }
+
+    .menu-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .menu-btn {
+        height: 48px;
+        width: 48px;
+        background-color: transparent;
+        border: 1px solid var(--border-2);
+        border-radius: 48px;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        img {
+          height: 24px;
+          width: 24px;
+        }
+      }
+    }
+  }
+}
+
 .navbar {
-  padding: 8px;
+  width: 100%;
+  padding: 16px 0;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: var(--nav-height);
-  z-index: 11;
+  z-index: 99;
+  transition: height 0.25s ease-out;
+  pointer-events: none;
+
+  .navbar-wrapper {
+    padding: 0 64px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-main {
+    pointer-events: all;
+    height: 48px;
+    padding: 8px 0;
+    border: 1px solid var(--border-2);
+    background-color: var(--white);
+    border-radius: 100px;
+    transition: 0.25s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    .when-scrolled {
+      width: 0;
+      overflow: hidden;
+      transition: width 0.25s ease-out;
+    }
+
+    .logo-icon img {
+      display: block;
+      height: 20px;
+      width: 20px;
+    }
+
+    .button {
+      height: 40px;
+      width: 130px;
+      padding: 0 16px;
+      background-color: var(--green);
+      border: 0;
+      line-break: 0;
+      white-space: 0;
+    }
+  }
 
   &.scrolled {
-    .navbar-contain {
-      background-color: var(--bg-gray);
+    .nav-main {
+      height: 56px;
+      box-shadow: 0 0 8px rgba(#000, 0.1);
+      padding: 8px 8px 8px 32px;
+      .when-scrolled.w-logo {
+        width: 20px;
+      }
+      .when-scrolled.w-button {
+        width: 130px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-top {
+    .nav-top-wrapper {
+      padding: 0 20px;
     }
   }
 
-  .navbar-contain {
-    height: 100%;
-    background-color: transparent;
-    border-radius: 8px;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: backgound-color 0.3s ease-out;
-  }
-
-  .logo {
-    img {
-      height: 24px;
-      display: inline-block;
+  .navbar {
+    .navbar-wrapper {
+      padding: 0 20px;
+    }
+    .nav-main .hide-1 {
+      display: none;
     }
   }
+}
 
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+@media (max-width: 760px) {
+  .navbar-top {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    background-color: var(--white);
 
-    a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    // .nav-top-wrapper {
+    //   .menu-right {
+    //     .menu-btn {
+    //       display: flex;
+    //     }
+    //   }
+    // }
+  }
 
-      .hiring-tag {
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        color: var(--white);
-        background-color: var(--purple);
-        padding: 3px 6px;
-        border-radius: 20px;
+  .navbar {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar-top {
+    .nav-top-wrapper {
+      .menu-right {
+        .menu-btn {
+          height: 40px;
+          width: 40px;
+        }
       }
     }
   }

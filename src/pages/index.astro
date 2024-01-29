@@ -1,0 +1,79 @@
+---
+import { sanityClient } from 'sanity:client'
+
+const homeData = await sanityClient.fetch(`
+  *[_type == 'homepage']{
+    heroHome,
+    aboutBlurb,
+    services{
+      tag,
+      title,
+      allServices[]{
+        title,
+        'icon': icon.asset,
+        para
+      }
+    },
+    areas {
+      title,
+      allAreas[]{
+        title,
+        'icon': icon.asset
+      }
+    },
+    teamHome,
+    reviews,
+    news,
+    seo{
+      title,
+      description,
+      'image': ogImage.asset->url
+    }
+  }[0]
+`)
+const allMembers = await sanityClient.fetch(`
+  *[_type == 'member'] | order(order asc)[0...6]{
+    name,
+    occu,
+    'pic': pic.asset,
+    bio,
+    socials
+  }
+`)
+const siteData = await sanityClient.fetch(`
+  *[_type == 'siteSettings']{
+    'allReviews': testimonials[0...4]{
+      name,
+      'pic': pic.asset,
+      occupation,
+      round,
+      reviewText
+    }
+  }[0]
+`)
+const { seo, heroHome, aboutBlurb, services, areas, teamHome, reviews, news } =
+  homeData
+const { allReviews } = siteData
+
+import '../css/home/homepage.scss'
+import Layout from '../components/Layout.astro'
+import HeroHome from '../components/home/HeroHome.astro'
+import ClientLogos from '../components/home/ClientLogos.astro'
+import WhyNeedl from '../components/home/WhyNeedl.astro'
+import Services from '../components/home/Services.astro'
+import TeamHome from '../components/home/TeamHome.astro'
+import Reviews from '../components/home/Reviews.astro'
+import News from '../components/home/News.astro'
+import CtaBox from '../components/CtaBox.astro'
+---
+
+<Layout title={seo.title} description={seo.description} image={seo.image}>
+  <HeroHome heroContent={heroHome} />
+  <ClientLogos />
+  <WhyNeedl content={aboutBlurb} />
+  <Services content={services} areas={areas} />
+  <TeamHome content={teamHome} allMembers={allMembers} />
+  <Reviews content={reviews} allReviews={allReviews} />
+  <News content={news} />
+  <CtaBox />
+</Layout>

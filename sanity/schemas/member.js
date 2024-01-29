@@ -29,7 +29,7 @@ export default {
     },
     {
       name: 'occu',
-      title: 'Occupation',
+      title: 'Designation',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
@@ -39,6 +39,12 @@ export default {
       description:
         'Enter all those applies. Leave the field empty to not show it',
       type: 'memberSocials',
+    },
+    {
+      name: 'bio',
+      title: 'Bio',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {

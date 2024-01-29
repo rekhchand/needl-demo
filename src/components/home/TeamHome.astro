@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../../utils/urlForImage'
+import IcoMail from '../../images/ico-mail.svg'
+import IcoPhone from '../../images/ico-phone.svg'
+import IcoLinkedin from '../../images/ico-linkedIn.svg'
+
+const { content, allMembers } = Astro.props
+---
+
+<section class='team-sec sec-padding' id='team'>
+  <div class='wrapper-2'>
+    <div class='team-sec-heading main-grid'>
+      <div class='left-part'>
+        <span class='sec-tag'>{content.tag}</span>
+      </div>
+      <div class='heading-content'>
+        <h2>{content.title}</h2>
+      </div>
+    </div>
+
+    <div class='all-members'>
+      {
+        allMembers.map((member) => (
+          <div class='member-card'>
+            <div class='pic'>
+              <Image
+                src={urlForImage(member.pic).url()}
+                alt={member.name}
+                width={getImageDimensions(member.pic).width}
+                height={getImageDimensions(member.pic).height}
+              />
+            </div>
+            <h3 class='name'>{member.name}</h3>
+            <span class='desig'>{member.occu}</span>
+            <div class='socials'>
+              {member.socials?.email && (
+                <a href={`mailto:${member.socials?.email}`}>
+                  <Image src={IcoMail} alt='Email' />
+                </a>
+              )}
+              {member.socials?.phone && (
+                <a href={`tel:${member.socials?.phone}`}>
+                  <Image src={IcoPhone} alt='Phone' />
+                </a>
+              )}
+              {member.socials?.linkedIn && (
+                <a href={member.socials.linkedIn} target='_blank'>
+                  <Image src={IcoLinkedin} alt='LinkedIn' />
+                </a>
+              )}
+            </div>
+            {member.socials?.calendly && (
+              <a
+                href={member.socials.calendly}
+                target='_blank'
+                class='book-button'
+              >
+                Book a Call
+              </a>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class='members-swiper'>
+      <div class='swiper swiper-team'>
+        <div class='swiper-wrapper'>
+          {
+            allMembers.map((member) => (
+              <div class='swiper-slide member-card'>
+                <div class='pic'>
+                  <Image
+                    src={urlForImage(member.pic).url()}
+                    alt={member.name}
+                    width={getImageDimensions(member.pic).width}
+                    height={getImageDimensions(member.pic).height}
+                  />
+                </div>
+                <h3 class='name'>{member.name}</h3>
+                <span class='desig'>{member.occu}</span>
+                <div class='socials'>
+                  {member.socials?.email && (
+                    <a href={`mailto:${member.socials?.email}`}>
+                      <Image src={IcoMail} alt='Email' />
+                    </a>
+                  )}
+                  {member.socials?.phone && (
+                    <a href={`tel:${member.socials?.phone}`}>
+                      <Image src={IcoPhone} alt='Phone' />
+                    </a>
+                  )}
+                  {member.socials?.linkedIn && (
+                    <a href={member.socials.linkedIn} target='_blank'>
+                      <Image src={IcoLinkedin} alt='LinkedIn' />
+                    </a>
+                  )}
+                </div>
+                {member.socials?.calendly && (
+                  <a
+                    href={member.socials.linkedIn}
+                    target='_blank'
+                    class='book-button'
+                  >
+                    Book a Call
+                  </a>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/css'
+  import { register } from 'swiper/element/bundle'
+  register()
+
+  // document.addEventListener('astro:page-load', () => {
+  const teamSwiper = new Swiper('.swiper-team', {
+    slidesPerView: 'auto',
+    spaceBetween: 20
+  })
+  // })
+</script>

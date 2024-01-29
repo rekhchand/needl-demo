@@ -6,6 +6,18 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'contact',
+      title: 'Primary contact link',
+      type: 'url',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'addresses',
+      title: 'Addresses',
+      type: 'array',
+      of: [{ type: 'addressCard' }],
+    },
+    {
       name: 'socials',
       title: 'Social links',
       type: 'array',

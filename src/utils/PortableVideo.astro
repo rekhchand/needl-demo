@@ -1,0 +1,14 @@
+---
+import { getFileAsset } from '@sanity/asset-utils'
+import { sanityClient } from 'sanity:client'
+
+const { video } = Astro.props.node
+const videoUrl = getFileAsset(video.asset, {
+  projectId: 'l7ozx2cv',
+  dataset: 'production'
+})
+---
+
+<div class='content-video'>
+  <video src={videoUrl.url} loop autoplay playsinline muted></video>
+</div>

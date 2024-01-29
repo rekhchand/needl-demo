@@ -22,9 +22,10 @@
   }
 
   &.pointer .cursor-inner {
-    transform: scale(3.5);
+    transform: scale(4);
+    opacity: 0.8;
   }
 }
-body:hover #cursor .cursor-inner {
-  opacity: 0.8;
-}
+// body:hover #cursor .cursor-inner {
+//   opacity: 0.8;
+// }

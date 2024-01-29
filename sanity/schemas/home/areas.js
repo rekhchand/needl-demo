@@ -6,6 +6,11 @@ export default {
   type: 'object',
   fields: [
     {
+      name: 'title',
+      title: 'Section title',
+      type: 'string',
+    },
+    {
       name: 'allAreas',
       title: 'All areas',
       type: 'array',

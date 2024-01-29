@@ -1,0 +1,52 @@
+.cta-box {
+  padding: 144px 0;
+  background-color: var(--bg-cta);
+  overflow: hidden;
+  position: relative;
+
+  .cta-contain {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .cta-div {
+    margin-top: 48px;
+    .button,
+    button {
+      pointer-events: all;
+    }
+  }
+
+  .cta-graphic {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+
+    .cta-graphic-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .needle-contain .needle {
+      background-color: var(--white);
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding: var(--gap-big-2) 0;
+  }
+
+  @media (max-width: 500px) {
+    .cta-graphic {
+      padding: 0;
+      padding-top: 8px;
+    }
+  }
+}

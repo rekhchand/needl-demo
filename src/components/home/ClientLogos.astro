@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets'
+import { sanityClient } from 'sanity:client'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../../utils/urlForImage'
+
+const siteData = await sanityClient.fetch(`
+  *[_type == 'siteSettings']{
+    logos[]{
+      name,
+      'image': logo.asset
+    },
+  }[0]
+`)
+const { logos } = siteData
+---
+
+<section class='logos-sec'>
+  <div class='wrapper'>
+    <span class='sec-tag'>From startups to enterprise</span>
+
+    <div class='all-logos'>
+      {
+        logos.map((logo) => (
+          <div class='logo'>
+            <Image
+              src={urlForImage(logo.image).url()}
+              alt={logo.name}
+              width={getImageDimensions(logo.image).width}
+              height={getImageDimensions(logo.image).height}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

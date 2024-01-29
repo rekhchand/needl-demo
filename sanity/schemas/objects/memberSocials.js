@@ -13,7 +13,7 @@ export default {
     {
       name: 'phone',
       title: 'Phone number',
-      type: 'number',
+      type: 'string',
     },
     {
       name: 'linkedIn',
@@ -21,8 +21,8 @@ export default {
       type: 'url',
     },
     {
-      name: 'twitter',
-      title: 'Twitter',
+      name: 'calendly',
+      title: 'Calendly link',
       type: 'url',
     },
   ],

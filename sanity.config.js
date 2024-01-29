@@ -1,25 +1,22 @@
-import { defineConfig } from 'sanity';
-import { deskTool } from 'sanity/desk';
-import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './sanity/schemas';
-import deskStructure from './sanity/deskStructure';
+import {defineConfig} from 'sanity'
+import { structureTool } from 'sanity/structure'
+import {visionTool} from '@sanity/vision'
+import {schemaTypes} from './sanity/schemas'
+import deskStructure from './sanity/deskStructure'
 
 export default defineConfig({
   name: 'default',
   title: 'needl.io',
   basePath: '/admin',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: "uqvx2o8i",
+  dataset: "production",
 
-  plugins: [
-    deskTool({
-      structure: deskStructure,
-    }),
-    visionTool(),
-  ],
+  plugins: [structureTool({
+    structure: deskStructure
+  }), visionTool()],
 
   schema: {
     types: schemaTypes,
   },
-});
+})

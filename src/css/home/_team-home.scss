@@ -1,0 +1,113 @@
+.team-sec {
+  margin-top: 32px;
+  padding: var(--gap-big-2) 0;
+  background-color: var(--black);
+  color: var(--white);
+  scroll-margin-top: 60px;
+  overflow: hidden;
+
+  .all-members {
+    margin-top: var(--gap-8);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .members-swiper {
+    margin-top: var(--gap-8);
+    display: none;
+    .swiper {
+      overflow: visible;
+    }
+    .member-card {
+      width: 265px;
+      height: auto;
+    }
+  }
+
+  .member-card {
+    padding: 40px;
+    background-color: rgba(#fff, 0.05);
+    border-radius: var(--br);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .pic {
+      height: 120px;
+      width: 120px;
+      background-color: #253632;
+      border-radius: 120px;
+      overflow: hidden;
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .name {
+      margin-top: 12px;
+    }
+
+    .desig {
+      margin-top: 8px;
+      font-size: 18px;
+      line-height: 1.3;
+      opacity: 0.5;
+    }
+
+    .socials {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      a {
+        height: 40px;
+        width: 40px;
+        background-color: rgba(#fff, 0.1);
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          height: 18px;
+          width: 18px;
+        }
+      }
+    }
+
+    .book-button {
+      margin-top: 16px;
+      height: 40px;
+      padding: 0 24px;
+      background-color: rgba(#fff, 0.1);
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .all-members {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .all-members {
+      grid-template-columns: 1fr;
+      display: none;
+    }
+    .members-swiper {
+      display: block;
+    }
+  }
+}
