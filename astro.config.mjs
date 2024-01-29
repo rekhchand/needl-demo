@@ -13,9 +13,6 @@ export default defineConfig({
     studioBasePath: "/admin",
     useCdn: false
   }), react(), sitemap()],
-  image: {
-    domains: ["cdn.sanity.io"],
-  },
   output: "hybrid",
   adapter: netlify()
 });
