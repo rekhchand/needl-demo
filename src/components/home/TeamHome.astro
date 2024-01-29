@@ -4,7 +4,7 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import { urlForImage } from '../../utils/urlForImage'
 import IcoMail from '../../images/ico-mail.svg'
 import IcoPhone from '../../images/ico-phone.svg'
-import IcoLinkedin from '../../images/ico-linkedIn.svg'
+import IcoLink from '../../images/ico-ico-linkedin.svg'
 
 const { content, allMembers } = Astro.props
 ---
@@ -25,7 +25,7 @@ const { content, allMembers } = Astro.props
         allMembers.map((member) => (
           <div class='member-card'>
             <div class='pic'>
-              <img
+              <Image
                 src={urlForImage(member.pic).url()}
                 alt={member.name}
                 width={getImageDimensions(member.pic).width}
@@ -55,6 +55,16 @@ const { content, allMembers } = Astro.props
                   />
                 </a>
               )}
+              {member.socials?.linkedIn && (
+                <a href={member.socials.linkedIn} target='_blank'>
+                  <Image
+                    src={IcoLink}
+                    alt='LinkedIn'
+                    width={IcoLink.width}
+                    height={IcoLink.height}
+                  />
+                </a>
+              )}
             </div>
             {member.socials?.calendly && (
               <a
@@ -77,7 +87,7 @@ const { content, allMembers } = Astro.props
             allMembers.map((member) => (
               <div class='swiper-slide member-card'>
                 <div class='pic'>
-                  <img
+                  <Image
                     src={urlForImage(member.pic).url()}
                     alt={member.name}
                     width={getImageDimensions(member.pic).width}
@@ -104,6 +114,16 @@ const { content, allMembers } = Astro.props
                         alt='Phone'
                         width={IcoPhone.width}
                         height={IcoPhone.height}
+                      />
+                    </a>
+                  )}
+                  {member.socials?.linkedIn && (
+                    <a href={member.socials.linkedIn} target='_blank'>
+                      <Image
+                        src={IcoLink}
+                        alt='LinkedIn'
+                        width={IcoLink.width}
+                        height={IcoLink.height}
                       />
                     </a>
                   )}

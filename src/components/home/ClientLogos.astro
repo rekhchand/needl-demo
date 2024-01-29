@@ -1,5 +1,6 @@
 ---
 import { sanityClient } from 'sanity:client'
+import { Image } from 'astro:assets'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlForImage } from '../../utils/urlForImage'
 
@@ -22,7 +23,7 @@ const { logos } = siteData
       {
         logos.map((logo) => (
           <div class='logo'>
-            <img
+            <Image
               src={urlForImage(logo.image).url()}
               alt={logo.name}
               width={getImageDimensions(logo.image).width}
