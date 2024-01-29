@@ -1,0 +1,55 @@
+---
+import { sanityClient } from 'sanity:client'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../../utils/urlForImage'
+import { PortableText } from 'astro-portabletext'
+import PortableCaseImage from '../../utils/PortableCaseImage.astro'
+import PortableVideo from '../../utils/PortableVideo.astro'
+import Layout from '../../components/Layout.astro'
+
+export async function getStaticPaths() {
+  const posts = await sanityClient.fetch(`
+    *[_type == 'media']{
+      _id,
+      slug,
+      title,
+      'pic': thumb.asset,
+      'body': mediaBody.blockText
+    }
+  `)
+
+  return posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug?.current || ''
+      },
+      props: { ...post }
+    }
+  })
+}
+
+const { slug, title, pic, body } = Astro.props
+
+const components = {
+  type: {
+    figure: PortableCaseImage,
+    videoUpload: PortableVideo
+  }
+}
+---
+
+<Layout title={title}>
+  <div class='wrapper'>
+    <h1>{title}</h1>
+    <p>{slug.current}</p>
+    <img
+      src={urlForImage(pic).url()}
+      alt={title}
+      width={getImageDimensions(pic).width}
+      height={getImageDimensions(pic).height}
+      loading='lazy'
+    />
+    <!-- <PortableText value={a.richText} components={components} /> -->
+    <PortableText value={body} />
+  </div>
+</Layout>

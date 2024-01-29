@@ -55,7 +55,6 @@ const { seo, heroHome, aboutBlurb, services, areas, teamHome, reviews, news } =
   homeData
 const { allReviews } = siteData
 
-import '../css/home/homepage.scss'
 import Layout from '../components/Layout.astro'
 import HeroHome from '../components/home/HeroHome.astro'
 import ClientLogos from '../components/home/ClientLogos.astro'
@@ -65,6 +64,7 @@ import TeamHome from '../components/home/TeamHome.astro'
 import Reviews from '../components/home/Reviews.astro'
 import News from '../components/home/News.astro'
 import CtaBox from '../components/CtaBox.astro'
+import '../css/home/homepage.scss'
 ---
 
 <Layout title={seo.title} description={seo.description} image={seo.image}>
