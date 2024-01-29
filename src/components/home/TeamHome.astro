@@ -25,7 +25,7 @@ const { content, allMembers } = Astro.props
         allMembers.map((member) => (
           <div class='member-card'>
             <div class='pic'>
-              <Image
+              <img
                 src={urlForImage(member.pic).url()}
                 alt={member.name}
                 width={getImageDimensions(member.pic).width}
@@ -87,7 +87,7 @@ const { content, allMembers } = Astro.props
             allMembers.map((member) => (
               <div class='swiper-slide member-card'>
                 <div class='pic'>
-                  <Image
+                  <img
                     src={urlForImage(member.pic).url()}
                     alt={member.name}
                     width={getImageDimensions(member.pic).width}
