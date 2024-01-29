@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlForImage } from '../../utils/urlForImage'
 const { content, areas } = Astro.props
@@ -22,7 +21,7 @@ const { content, areas } = Astro.props
           <div class='service'>
             <span class='service-num'>0{i + 1}</span>
             <h3>{service.title}</h3>
-            <Image
+            <img
               src={urlForImage(service.icon).url()}
               alt={service.title}
               width={getImageDimensions(service.icon).width}
@@ -43,7 +42,7 @@ const { content, areas } = Astro.props
             areas.allAreas.map((area) => (
               <div class='area'>
                 <div class='icon'>
-                  <Image
+                  <img
                     src={urlForImage(area.icon).url()}
                     alt={area.title}
                     width={getImageDimensions(area.icon).width}
@@ -58,7 +57,7 @@ const { content, areas } = Astro.props
             areas.allAreas.map((area) => (
               <div class='area'>
                 <div class='icon'>
-                  <Image
+                  <img
                     src={urlForImage(area.icon).url()}
                     alt={area.title}
                     width={getImageDimensions(area.icon).width}

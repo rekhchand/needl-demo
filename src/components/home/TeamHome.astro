@@ -25,7 +25,7 @@ const { content, allMembers } = Astro.props
         allMembers.map((member) => (
           <div class='member-card'>
             <div class='pic'>
-              <Image
+              <img
                 src={urlForImage(member.pic).url()}
                 alt={member.name}
                 width={getImageDimensions(member.pic).width}
@@ -37,17 +37,32 @@ const { content, allMembers } = Astro.props
             <div class='socials'>
               {member.socials?.email && (
                 <a href={`mailto:${member.socials?.email}`}>
-                  <Image src={IcoMail} alt='Email' />
+                  <Image
+                    src={IcoMail}
+                    alt='Email'
+                    width={IcoMail.width}
+                    height={IcoMail.height}
+                  />
                 </a>
               )}
               {member.socials?.phone && (
                 <a href={`tel:${member.socials?.phone}`}>
-                  <Image src={IcoPhone} alt='Phone' />
+                  <Image
+                    src={IcoPhone}
+                    alt='Phone'
+                    width={IcoPhone.width}
+                    height={IcoPhone.height}
+                  />
                 </a>
               )}
               {member.socials?.linkedIn && (
                 <a href={member.socials.linkedIn} target='_blank'>
-                  <Image src={IcoLinkedin} alt='LinkedIn' />
+                  <Image
+                    src={IcoLinkedin}
+                    alt='LinkedIn'
+                    width={IcoLinkedin.width}
+                    height={IcoLinkedin.height}
+                  />
                 </a>
               )}
             </div>
@@ -72,7 +87,7 @@ const { content, allMembers } = Astro.props
             allMembers.map((member) => (
               <div class='swiper-slide member-card'>
                 <div class='pic'>
-                  <Image
+                  <img
                     src={urlForImage(member.pic).url()}
                     alt={member.name}
                     width={getImageDimensions(member.pic).width}
@@ -84,17 +99,32 @@ const { content, allMembers } = Astro.props
                 <div class='socials'>
                   {member.socials?.email && (
                     <a href={`mailto:${member.socials?.email}`}>
-                      <Image src={IcoMail} alt='Email' />
+                      <Image
+                        src={IcoMail}
+                        alt='Email'
+                        width={IcoMail.width}
+                        height={IcoMail.height}
+                      />
                     </a>
                   )}
                   {member.socials?.phone && (
                     <a href={`tel:${member.socials?.phone}`}>
-                      <Image src={IcoPhone} alt='Phone' />
+                      <Image
+                        src={IcoPhone}
+                        alt='Phone'
+                        width={IcoPhone.width}
+                        height={IcoPhone.height}
+                      />
                     </a>
                   )}
                   {member.socials?.linkedIn && (
                     <a href={member.socials.linkedIn} target='_blank'>
-                      <Image src={IcoLinkedin} alt='LinkedIn' />
+                      <Image
+                        src={IcoLinkedin}
+                        alt='LinkedIn'
+                        width={IcoLinkedin.width}
+                        height={IcoLinkedin.height}
+                      />
                     </a>
                   )}
                 </div>

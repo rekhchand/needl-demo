@@ -24,7 +24,7 @@ const { content, allReviews } = Astro.props
             <p class='review-text'>{review.reviewText}</p>
 
             <div class='reviewer-info'>
-              <Image
+              <img
                 src={urlForImage(review.pic).url()}
                 alt={review.name}
                 width={getImageDimensions(review.pic).width}
@@ -52,7 +52,7 @@ const { content, allReviews } = Astro.props
               <div class='swiper-slide review-card'>
                 <p class='review-text'>{review.reviewText}</p>
                 <div class='reviewer-info'>
-                  <Image
+                  <img
                     src={urlForImage(review.pic).url()}
                     alt={review.name}
                     width={getImageDimensions(review.pic).width}
