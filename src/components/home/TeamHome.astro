@@ -30,6 +30,7 @@ const { content, allMembers } = Astro.props
                 alt={member.name}
                 width={getImageDimensions(member.pic).width}
                 height={getImageDimensions(member.pic).height}
+                loading='lazy'
               />
             </div>
             <h3 class='name'>{member.name}</h3>
@@ -92,6 +93,7 @@ const { content, allMembers } = Astro.props
                     alt={member.name}
                     width={getImageDimensions(member.pic).width}
                     height={getImageDimensions(member.pic).height}
+                    loading='lazy'
                   />
                 </div>
                 <h3 class='name'>{member.name}</h3>

@@ -26,6 +26,7 @@ const { content, areas } = Astro.props
               alt={service.title}
               width={getImageDimensions(service.icon).width}
               height={getImageDimensions(service.icon).height}
+              loading='lazy'
             />
             <p class='service-details'>{service.para}</p>
           </div>
@@ -47,6 +48,7 @@ const { content, areas } = Astro.props
                     alt={area.title}
                     width={getImageDimensions(area.icon).width}
                     height={getImageDimensions(area.icon).height}
+                    loading='lazy'
                   />
                 </div>
                 <h3 class='h3-small'>{area.title}</h3>
@@ -62,6 +64,7 @@ const { content, areas } = Astro.props
                     alt={area.title}
                     width={getImageDimensions(area.icon).width}
                     height={getImageDimensions(area.icon).height}
+                    loading='lazy'
                   />
                 </div>
                 <h3 class='h3-small'>{area.title}</h3>

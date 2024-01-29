@@ -28,6 +28,7 @@ const { content, allReviews } = Astro.props
                 alt={review.name}
                 width={getImageDimensions(review.pic).width}
                 height={getImageDimensions(review.pic).height}
+                loading='lazy'
               />
               <div class='reviewer-texts'>
                 <p class='name'>{review.name}</p>
@@ -56,6 +57,7 @@ const { content, allReviews } = Astro.props
                     alt={review.name}
                     width={getImageDimensions(review.pic).width}
                     height={getImageDimensions(review.pic).height}
+                    loading='lazy'
                   />
                   <div class='reviewer-texts'>
                     <p class='name'>{review.name}</p>
