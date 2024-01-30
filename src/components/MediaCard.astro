@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlForImage } from '../utils/urlForImage'
+import IcoArticle from '../images/ico-article.svg'
+import IcoPodcast from '../images/ico-podcast.svg'
+import IcoEvent from '../images/ico-event.svg'
+
+const icons = {
+  article: IcoArticle,
+  podcast: IcoPodcast,
+  event: IcoEvent
+}
+
+const { media, className } = Astro.props
+---
+
+<a
+  href={`/media/${media.slug.current}`}
+  class={`media-card ${className ? className : ''}`}
+  data-type={media.mediaType}
+>
+  <div class='thumb'>
+    <img
+      src={urlForImage(media.thumb).url()}
+      alt={media.title}
+      width={getImageDimensions(media.thumb).width}
+      height={getImageDimensions(media.thumb).height}
+      loading='lazy'
+      class='news-image'
+    />
+    <div class='news-type'>
+      <Image
+        src={icons[media.mediaType]}
+        alt={`Media: ${media.mediaType}`}
+        width={IcoArticle.width}
+        height={IcoArticle.height}
+      />
+      {media.mediaType}
+    </div>
+  </div>
+  <h3 class='h3-small'>{media.title}</h3>
+  <div class='author'>
+    <img
+      src={urlForImage(media.author.pic).url()}
+      alt={media.title}
+      width={getImageDimensions(media.author.pic).width}
+      height={getImageDimensions(media.author.pic).height}
+      loading='lazy'
+    />
+    <span>{media.author.name}</span>
+  </div>
+</a>

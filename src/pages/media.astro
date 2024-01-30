@@ -1,0 +1,93 @@
+---
+import { sanityClient } from 'sanity:client'
+import Layout from '../components/Layout.astro'
+import Hero from '../components/Hero.astro'
+import MediaCard from '../components/MediaCard.astro'
+import CtaBox from '../components/CtaBox.astro'
+
+const mediaData = await sanityClient.fetch(`
+  *[_type == 'mediapage']{
+    heroCommon{
+      title,
+      para
+    },
+    seo
+  }[0]
+`)
+const allMedia = await sanityClient.fetch(`
+  *[_type == 'media'] | order(_createdAt desc){
+    title,
+    slug,
+    mediaType,
+    'thumb': thumb.asset,
+    author->{name, 'pic': pic.asset}
+  }
+`)
+
+const { heroCommon, seo } = mediaData
+---
+
+<Layout title={seo.title} description={seo.description} image={seo.image}>
+  <Hero heroContent={heroCommon} />
+
+  <section class='media-main-sec'>
+    <div class='wrapper'>
+      <div class='media-main-contain main-grid'>
+        <div class='left-part'>
+          <span class='sec-tag'>Filters:</span>
+          <div class='all-filters'>
+            <span class='filter active' data-type='all'>All media</span>
+            <span class='filter' data-type='article'>Articles</span>
+            <span class='filter' data-type='podcast'>Podcasts</span>
+            <span class='filter' data-type='event'>Events</span>
+          </div>
+        </div>
+        <div class='media-main-content'>
+          <div class='all-media'>
+            {allMedia.map((media) => <MediaCard media={media} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBox />
+</Layout>
+
+<style lang='scss'>
+  .all-filters {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    .filter {
+      font-size: 16px;
+      padding: 8px 16px;
+      background-color: var(--white);
+      border: 1px solid var(--border-2);
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-out;
+
+      &:hover {
+        background-color: var(--bg-gray);
+      }
+      &.active {
+        border: 0;
+        background-color: var(--black);
+        color: var(--white);
+        cursor: initial;
+      }
+    }
+  }
+  .media-main-sec {
+    padding-bottom: var(--gap-big-2);
+  }
+  .all-media {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px 32px;
+  }
+</style>

@@ -1,6 +1,12 @@
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 import { BsCollection } from 'react-icons/bs';
 
+const icons = {
+  article: 'Article',
+  podcast: 'Podcast',
+  event: 'Event',
+}
+
 export default {
   name: 'media',
   title: 'Media',
@@ -23,16 +29,6 @@ export default {
       },
       validation: (Rule) => Rule.required(),
     },
-    // {
-    //   title: 'Icon',
-    //   name: 'icon',
-    //   type: 'iconPicker',
-    //   options: {
-    //     providers: ['fi'],
-    //     outputFormat: 'react',
-    //     storeSvg: true,
-    //   },
-    // },
     {
       name: 'mediaType',
       title: 'Media type',
@@ -42,9 +38,19 @@ export default {
         list: [
           { title: 'Article', value: 'article' },
           { title: 'Podcast', value: 'podcast' },
+          { title: 'Event', value: 'event' },
         ],
       },
       initialValue: 'article',
+    },
+    {
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: [{type: 'member'}],
+      options: {
+        disableNew: true,
+      }
     },
     {
       name: 'thumb',
@@ -66,9 +72,10 @@ export default {
     },
     prepare(selection) {
       const { title, mediaType, media } = selection;
+      console.log(mediaType, icons[mediaType]);
       return {
         title,
-        subtitle: `${mediaType === 'article' ? '✍️ Article' : '🎙️ Podcast'}`,
+        subtitle: icons[mediaType],
         media,
       };
     },

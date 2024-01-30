@@ -7,7 +7,6 @@ import deskStructure from './sanity/deskStructure'
 export default defineConfig({
   name: 'default',
   title: 'needl.io',
-  basePath: '/admin',
 
   projectId: "uqvx2o8i",
   dataset: "production",

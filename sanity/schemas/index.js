@@ -1,10 +1,11 @@
 import media from './media';
 import member from './member';
 import pageHome from './pageHome';
-import pageAbout from './pageAbout';
+import pageMedia from './pageMedia';
 import siteSettings from './siteSettings';
 
 import seo from './objects/seo';
+import heroCommon from './objects/heroCommon';
 import figure from './objects/figure';
 import soundcloud from './objects/soundcloud';
 import blockWithList from './objects/blockWithList';
@@ -27,17 +28,15 @@ import teamHome from './home/teamHome';
 import reviews from './home/reviews';
 import news from './home/news';
 
-import heroAbout from './about/heroAbout';
-import values from './about/values';
-
 export const schemaTypes = [
   media,
   member,
   pageHome,
-  pageAbout,
+  pageMedia,
   siteSettings,
 
   seo,
+  heroCommon,
   figure,
   soundcloud,
   blockWithList,
@@ -59,7 +58,4 @@ export const schemaTypes = [
   teamHome,
   reviews,
   news,
-
-  heroAbout,
-  values,
 ];

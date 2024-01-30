@@ -1,0 +1,15 @@
+---
+const { heroContent } = Astro.props
+---
+
+<div class='hero'>
+  <div class='wrapper'>
+    <div class='hero-sec-contain main-grid'>
+      <div class='left-part'></div>
+      <div class='hero-content'>
+        <h1 class='h1-small'>{heroContent.title}</h1>
+        <p class='sub'>{heroContent.para}</p>
+      </div>
+    </div>
+  </div>
+</div>

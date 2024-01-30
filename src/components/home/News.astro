@@ -1,13 +1,16 @@
 ---
-import { Image } from 'astro:assets'
-import { getImageDimensions } from '@sanity/asset-utils'
-import { urlForImage } from '../../utils/urlForImage'
-import IcoArticle from '../../images/ico-article.svg'
-import News1 from '../../images/news-scaling-success.svg'
-import News2 from '../../images/news-strategic-forecasting.svg'
-import News3 from '../../images/news-Navigating-the-Maze.svg'
-import News4 from '../../images/news-Unlocking-Success.svg'
+import { sanityClient } from 'sanity:client'
+import MediaCard from '../MediaCard.astro'
 
+const allMedia = await sanityClient.fetch(`
+  *[_type == 'media'] | order(_createdAt desc)[0...4]{
+    title,
+    slug,
+    mediaType,
+    'thumb': thumb.asset,
+    author->{name, 'pic': pic.asset}
+  }
+`)
 const { content } = Astro.props
 ---
 
@@ -20,15 +23,7 @@ const { content } = Astro.props
       <div class='heading-content'>
         <h2>{content.title}</h2>
         <div class='cta-div'>
-          {
-            /* <a
-            href="https://www.linkedin.com/newsletters/no-bullsh-t-just-delivery-6874748425976467456/"
-            target="_blank"
-            class="button angle-arrow"
-          >
-            View blog
-          </a> */
-          }
+          <a href='/media' class='button angle-arrow'> View blog </a>
           <a
             href='https://www.meetup.com/Dublin-Tech-Talks/'
             target='_blank'
@@ -43,113 +38,11 @@ const { content } = Astro.props
     <div class='all-news'>
       <div class='swiper swiper-news'>
         <div class='swiper-wrapper'>
-          <a
-            href='https://www.linkedin.com/pulse/scaling-success-gavin-fox-mtlae/?trackingId=Cwas16AlS0G75saVANKO5w%3D%3D'
-            target='_blank'
-            class='swiper-slide news'
-          >
-            <div class='thumb'>
-              <Image
-                src={News1}
-                alt='News'
-                width={News1.width}
-                height={News1.height}
-                class='news-image'
-              />
-              <div class='news-type'>
-                <Image
-                  src={IcoArticle}
-                  alt='article'
-                  width={IcoArticle.width}
-                  height={IcoArticle.height}
-                />
-                Article
-              </div>
-            </div>
-            <h3 class='h3-small'>Scaling success</h3>
-          </a>
-          <a
-            href='https://www.linkedin.com/pulse/strategic-forecasting-navigating-2024-hiring-landscape-gavin-fox-8zgle/?trackingId=KkrkGyy5RKq3jsdCjE0kLA%3D%3D'
-            target='_blank'
-            class='swiper-slide news'
-          >
-            <div class='thumb'>
-              <Image
-                src={News2}
-                alt='News'
-                width={News2.width}
-                height={News2.height}
-                class='news-image'
-              />
-              <div class='news-type'>
-                <Image
-                  src={IcoArticle}
-                  alt='article'
-                  width={IcoArticle.width}
-                  height={IcoArticle.height}
-                />
-                Article
-              </div>
-            </div>
-            <h3 class='h3-small'>
-              Strategic Forecasting Navigating the 2024 Hiring Landscape
-            </h3>
-          </a>
-          <a
-            href='https://www.linkedin.com/pulse/navigating-maze-strategies-effective-leadership-selection-fox-xp9qe/?trackingId=r5y6ZS5xTmOzRowFyVLq%2FA%3D%3D'
-            target='_blank'
-            class='swiper-slide news'
-          >
-            <div class='thumb'>
-              <Image
-                src={News3}
-                alt='News'
-                width={News3.width}
-                height={News3.height}
-                class='news-image'
-              />
-              <div class='news-type'>
-                <Image
-                  src={IcoArticle}
-                  alt='article'
-                  width={IcoArticle.width}
-                  height={IcoArticle.height}
-                />
-                Article
-              </div>
-            </div>
-            <h3 class='h3-small'>
-              Navigating the Maze: Strategies for Effective Leadership Selection
-              and Diversity Recruitment
-            </h3>
-          </a>
-          <a
-            href='https://www.linkedin.com/pulse/unlocking-success-okrs-comprehensive-guide-gavin-fox-cy6gf/?trackingId=pczZSI4kQIK2b12E52WZLw%3D%3D'
-            target='_blank'
-            class='swiper-slide news'
-          >
-            <div class='thumb'>
-              <Image
-                src={News4}
-                alt='News'
-                width={News4.width}
-                height={News4.height}
-                class='news-image'
-              />
-              <div class='news-type'>
-                <Image
-                  src={IcoArticle}
-                  alt='article'
-                  width={IcoArticle.width}
-                  height={IcoArticle.height}
-                />
-                Article
-              </div>
-            </div>
-            <h3 class='h3-small'>
-              Unlocking Success with OKRs: A Comprehensive Guide
-            </h3>
-          </a>
+          {
+            allMedia.map((media) => (
+              <MediaCard media={media} className='swiper-slide news' />
+            ))
+          }
         </div>
       </div>
     </div>

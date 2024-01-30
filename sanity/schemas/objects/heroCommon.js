@@ -1,26 +1,20 @@
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 
 export default {
-  name: 'values',
-  title: 'Values section',
+  name: 'heroCommon',
+  title: 'Hero section',
   type: 'object',
   fields: [
     {
       name: 'title',
-      title: 'Section title',
+      title: 'Hero title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'para',
-      title: 'Short paragraph',
-      type: 'string',
-    },
-    {
-      name: 'allValues',
-      title: 'All values',
-      type: 'array',
-      of: [{ type: 'valueCard' }],
+      title: 'Hero paragraph',
+      type: 'text',
     },
   ],
 };
