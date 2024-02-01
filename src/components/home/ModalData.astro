@@ -1,0 +1,174 @@
+---
+import { Image } from 'astro:assets'
+import { urlForImage } from '../../utils/urlForImage'
+import IcoMail from '../../images/ico-mail.svg'
+import IcoPhone from '../../images/ico-phone.svg'
+import IcoLink from '../../images/ico-linkedin.svg'
+import IcoBook from '../../images/ico-calendar.svg'
+import ButtonIco from '../../images/ico-button.svg'
+
+const { member } = Astro.props
+---
+
+<div class='card-content'>
+  <img
+    src={urlForImage(member.pic).url()}
+    alt={member.name}
+    width='120'
+    height='120'
+    class='bio-pic'
+  />
+  <h3 class='name'>{member.name}</h3>
+  <span class='desig'>{member.occu}</span>
+  <p class='bio-text'>{member.bio}</p>
+
+  <div class='socials'>
+    {
+      member.socials?.email && (
+        <a href={`mailto:${member.socials?.email}`}>
+          <Image
+            src={IcoMail}
+            alt='Email'
+            width={IcoMail.width}
+            height={IcoMail.height}
+          />
+          <span>Email</span>
+          <Image
+            src={ButtonIco}
+            alt='Arrow'
+            width={ButtonIco.width}
+            height={ButtonIco.height}
+            class='arrow'
+          />
+        </a>
+      )
+    }
+    {
+      member.socials?.phone && (
+        <a href={`tel:${member.socials?.phone}`}>
+          <Image
+            src={IcoPhone}
+            alt='Phone'
+            width={IcoPhone.width}
+            height={IcoPhone.height}
+          />
+          <span>Phone</span>
+          <Image
+            src={ButtonIco}
+            alt='Arrow'
+            width={ButtonIco.width}
+            height={ButtonIco.height}
+            class='arrow'
+          />
+        </a>
+      )
+    }
+    {
+      member.socials?.linkedIn && (
+        <a href={member.socials.linkedIn} target='_blank'>
+          <Image
+            src={IcoLink}
+            alt='LinkedIn'
+            width={IcoLink.width}
+            height={IcoLink.height}
+          />
+          <span>LinkedIn</span>
+          <Image
+            src={ButtonIco}
+            alt='Arrow'
+            width={ButtonIco.width}
+            height={ButtonIco.height}
+            class='arrow'
+          />
+        </a>
+      )
+    }
+    {
+      member.socials?.calendly && (
+        <a href={member.socials.calendly} target='_blank' class='book-button'>
+          <Image
+            src={IcoBook}
+            alt='Book a Call'
+            width={IcoBook.width}
+            height={IcoBook.height}
+          />
+          <span>Book a Call</span>
+          <Image
+            src={ButtonIco}
+            alt='Arrow'
+            width={ButtonIco.width}
+            height={ButtonIco.height}
+            class='arrow'
+          />
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style lang='scss'>
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .bio-pic {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    background-color: #253632;
+  }
+  .name {
+    margin-top: 24px;
+  }
+  .desig {
+    margin-top: 4px;
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  .bio-text {
+    margin-top: 32px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .socials {
+    margin-top: auto;
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    a {
+      transition: 0s;
+      width: 100%;
+      border: 1px solid #253632;
+      padding: 12px 16px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      color: var(--white);
+      img {
+        height: 18px;
+        width: 18px;
+      }
+      .arrow {
+        margin-left: auto;
+        filter: invert(1);
+        transform: rotate(-45deg);
+      }
+      &.book-button {
+        color: var(--black);
+        background-color: var(--white);
+        img {
+          filter: invert(1);
+        }
+        .arrow {
+          filter: invert(0);
+        }
+      }
+    }
+  }
+</style>

@@ -33,6 +33,7 @@ const homeData = await sanityClient.fetch(`
 `)
 const allMembers = await sanityClient.fetch(`
   *[_type == 'member'] | order(order asc)[0...6]{
+    _id,
     name,
     occu,
     'pic': pic.asset,
@@ -61,6 +62,7 @@ import ClientLogos from '../components/home/ClientLogos.astro'
 import WhyNeedl from '../components/home/WhyNeedl.astro'
 import Services from '../components/home/Services.astro'
 import TeamHome from '../components/home/TeamHome.astro'
+import TeamHomeReact from '../components/home/TeamHome.jsx'
 import Reviews from '../components/home/Reviews.astro'
 import News from '../components/home/News.astro'
 import CtaBox from '../components/CtaBox.astro'
@@ -73,6 +75,7 @@ import '../css/home/homepage.scss'
   <WhyNeedl content={aboutBlurb} />
   <Services content={services} areas={areas} />
   <TeamHome content={teamHome} allMembers={allMembers} />
+  <!-- <TeamHomeReact content={teamHome} allMembers={allMembers} client:load /> -->
   <Reviews content={reviews} allReviews={allReviews} />
   <News content={news} />
   <CtaBox />

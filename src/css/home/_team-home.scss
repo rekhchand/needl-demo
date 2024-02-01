@@ -39,12 +39,33 @@
       width: 120px;
       background-color: #253632;
       border-radius: 120px;
-      overflow: hidden;
-      img {
+      position: relative;
+      .member-pic {
         display: block;
         height: 100%;
         width: 100%;
         object-fit: cover;
+        border-radius: 120px;
+      }
+      .bio-btn {
+        height: 32px;
+        width: 32px;
+        background-color: var(--black);
+        border-radius: 32px;
+        border: 1px solid rgba(#fff, 0.2);
+        cursor: pointer;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        img {
+          height: 18px;
+          width: 18px;
+        }
       }
     }
 
@@ -92,6 +113,73 @@
       justify-content: center;
       text-align: center;
       color: var(--white);
+    }
+  }
+
+  .member-bio-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100svh;
+    background-color: rgba(#000, 0.4);
+    z-index: 100;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out;
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      .bio-card {
+        transition-delay: 0.1s;
+        transform: translateX(0);
+      }
+    }
+
+    .bio-hidden-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: transparent;
+    }
+
+    .bio-card {
+      z-index: 2;
+      width: 432px;
+      height: 100%;
+      overflow-y: auto;
+      background-color: var(--black);
+      border-radius: var(--br);
+      border: 1px solid #253632;
+      padding: 32px;
+      position: relative;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-out;
+
+      .bio-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 2;
+        cursor: pointer;
+        img {
+          display: block;
+          height: 24px;
+          width: 24px;
+        }
+      }
+
+      .bio-card-content {
+        height: 100%;
+      }
     }
   }
 

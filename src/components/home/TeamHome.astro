@@ -2,9 +2,12 @@
 import { Image } from 'astro:assets'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlForImage } from '../../utils/urlForImage'
+import IcoBio from '../../images/ico-info.svg'
 import IcoMail from '../../images/ico-mail.svg'
 import IcoPhone from '../../images/ico-phone.svg'
 import IcoLink from '../../images/ico-linkedin.svg'
+import IcoClose from '../../images/ico-close-white.svg'
+import ModalData from './ModalData.astro'
 
 const { content, allMembers } = Astro.props
 ---
@@ -22,7 +25,7 @@ const { content, allMembers } = Astro.props
 
     <div class='all-members'>
       {
-        allMembers.map((member) => (
+        allMembers.map((member, i) => (
           <div class='member-card'>
             <div class='pic'>
               <img
@@ -31,7 +34,16 @@ const { content, allMembers } = Astro.props
                 width={getImageDimensions(member.pic).width}
                 height={getImageDimensions(member.pic).height}
                 loading='lazy'
+                class='member-pic'
               />
+              <div class='bio-btn' title='Bio' data-serial={i}>
+                <Image
+                  src={IcoBio}
+                  alt='Bio'
+                  width={IcoBio.width}
+                  height={IcoBio.height}
+                />
+              </div>
             </div>
             <h3 class='name'>{member.name}</h3>
             <span class='desig'>{member.occu}</span>
@@ -81,11 +93,28 @@ const { content, allMembers } = Astro.props
       }
     </div>
 
+    <div class='member-bio-modal'>
+      <div class='bio-card'>
+        <div class='bio-card-content'>
+          {allMembers.map((member) => <ModalData member={member} />)}
+        </div>
+        <div class='bio-close'>
+          <Image
+            src={IcoClose}
+            alt='Close'
+            width={IcoClose.width}
+            height={IcoClose.height}
+          />
+        </div>
+      </div>
+      <div class='bio-hidden-bg'></div>
+    </div>
+
     <div class='members-swiper'>
       <div class='swiper swiper-team'>
         <div class='swiper-wrapper'>
           {
-            allMembers.map((member) => (
+            allMembers.map((member, i) => (
               <div class='swiper-slide member-card'>
                 <div class='pic'>
                   <img
@@ -94,7 +123,16 @@ const { content, allMembers } = Astro.props
                     width={getImageDimensions(member.pic).width}
                     height={getImageDimensions(member.pic).height}
                     loading='lazy'
+                    class='member-pic'
                   />
+                  <div class='bio-btn' title='Bio' data-serial={i}>
+                    <Image
+                      src={IcoBio}
+                      alt='Bio'
+                      width={IcoBio.width}
+                      height={IcoBio.height}
+                    />
+                  </div>
                 </div>
                 <h3 class='name'>{member.name}</h3>
                 <span class='desig'>{member.occu}</span>
@@ -132,7 +170,7 @@ const { content, allMembers } = Astro.props
                 </div>
                 {member.socials?.calendly && (
                   <a
-                    href={member.socials.linkedIn}
+                    href={member.socials.calendly}
                     target='_blank'
                     class='book-button'
                   >
@@ -160,4 +198,33 @@ const { content, allMembers } = Astro.props
     spaceBetween: 20
   })
   // })
+
+  const allBioBtns = document.querySelectorAll('.member-card .bio-btn')
+  const bioModal = document.querySelector('.member-bio-modal')
+  const bioBg = bioModal.querySelector('.bio-hidden-bg')
+  const bioClose = bioModal.querySelector('.bio-close')
+
+  const allContents = bioModal.querySelectorAll('.card-content')
+  const bioPic = bioModal.querySelector('.bio-pic')
+  const bioName = bioModal.querySelector('.name')
+  const bioDesig = bioModal.querySelector('.desig')
+  const bioText = bioModal.querySelector('.bio-text')
+
+  allBioBtns.forEach((btn) => {
+    btn.addEventListener('click', (i) => {
+      // const member = allMembers.filter(
+      //   (a) => a._id === i.currentTarget.dataset.id
+      // )
+      // console.log(member)
+      bioModal.classList.add('open')
+      allContents.forEach((b) => (b.style.display = 'none'))
+      allContents[i.currentTarget.dataset.serial].style.display = 'flex'
+    })
+  })
+  bioBg.addEventListener('click', () => {
+    bioModal.classList.remove('open')
+  })
+  bioClose.addEventListener('click', () => {
+    bioModal.classList.remove('open')
+  })
 </script>
