@@ -197,5 +197,12 @@
     .members-swiper {
       display: block;
     }
+    .member-bio-modal {
+      padding: 8px;
+      .bio-card {
+        width: 100%;
+        padding: 24px;
+      }
+    }
   }
 }

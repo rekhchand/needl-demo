@@ -71,6 +71,38 @@ const { content, areas } = Astro.props
               </div>
             ))
           }
+          {
+            areas.allAreas.map((area) => (
+              <div class='area'>
+                <div class='icon'>
+                  <img
+                    src={urlForImage(area.icon).url()}
+                    alt={area.title}
+                    width={getImageDimensions(area.icon).width}
+                    height={getImageDimensions(area.icon).height}
+                    loading='lazy'
+                  />
+                </div>
+                <h3 class='h3-small'>{area.title}</h3>
+              </div>
+            ))
+          }
+          {
+            areas.allAreas.map((area) => (
+              <div class='area'>
+                <div class='icon'>
+                  <img
+                    src={urlForImage(area.icon).url()}
+                    alt={area.title}
+                    width={getImageDimensions(area.icon).width}
+                    height={getImageDimensions(area.icon).height}
+                    loading='lazy'
+                  />
+                </div>
+                <h3 class='h3-small'>{area.title}</h3>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
