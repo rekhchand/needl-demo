@@ -4,8 +4,9 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import { urlForImage } from '../../utils/urlForImage'
 import { PortableText } from 'astro-portabletext'
 import PortableCaseImage from '../../utils/PortableCaseImage.astro'
-import PortableVideo from '../../utils/PortableVideo.astro'
+import PortableSoundcloud from '../../utils/PortableSoundcloud.astro'
 import Layout from '../../components/Layout.astro'
+import CtaBox from '../../components/CtaBox.astro'
 
 export async function getStaticPaths() {
   const posts = await sanityClient.fetch(`
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
       _id,
       slug,
       title,
+      author->{name, 'pic': pic.asset},
       'pic': thumb.asset,
       'body': mediaBody.blockText
     }
@@ -28,28 +30,70 @@ export async function getStaticPaths() {
   })
 }
 
-const { slug, title, pic, body } = Astro.props
+const { slug, title, author, pic, body } = Astro.props
 
 const components = {
   type: {
     figure: PortableCaseImage,
-    videoUpload: PortableVideo
+    soundcloud: PortableSoundcloud
   }
+  // mark: {
+  //   link: (props) => {
+  //     const { markDef, children } = props.node
+  //     console.log(markDef.href, children[0].text)
+
+  //     return (
+  //       <a href={markDef.href} target='_blank'>
+  //         {children[0].text}
+  //       </a>
+  //     )
+  //   }
+  // }
 }
 ---
 
 <Layout title={title}>
-  <div class='wrapper'>
-    <h1>{title}</h1>
-    <p>{slug.current}</p>
-    <img
-      src={urlForImage(pic).url()}
-      alt={title}
-      width={getImageDimensions(pic).width}
-      height={getImageDimensions(pic).height}
-      loading='lazy'
-    />
-    <!-- <PortableText value={a.richText} components={components} /> -->
-    <PortableText value={body} />
-  </div>
+  <main class='media-page'>
+    <div class='hero'>
+      <div class='wrapper'>
+        <div class='hero-sec-contain main-grid'>
+          <div class='left-part'></div>
+          <div class='hero-content'>
+            <h1 class='h1-small'>{title}</h1>
+            <div class='author'>
+              <img
+                src={urlForImage(author.pic).url()}
+                alt={author.name}
+                width={getImageDimensions(author.pic).width}
+                height={getImageDimensions(author.pic).height}
+                loading='lazy'
+              />
+              <span>{author.name}</span>
+            </div>
+            <img
+              src={urlForImage(pic).url()}
+              alt={title}
+              width={getImageDimensions(pic).width}
+              height={getImageDimensions(pic).height}
+              class='hero-image'
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class='media-body'>
+      <div class='wrapper'>
+        <div class='media-contain main-grid'>
+          <div class='media-left'>
+            <span class='sec-tag'>Share:</span>
+          </div>
+          <div class='media-content'>
+            <PortableText value={body} components={components} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBox />
+  </main>
 </Layout>

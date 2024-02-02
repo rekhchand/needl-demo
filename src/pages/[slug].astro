@@ -1,0 +1,52 @@
+---
+import { sanityClient } from 'sanity:client'
+import { PortableText } from 'astro-portabletext'
+import Layout from '../components/Layout.astro'
+
+export async function getStaticPaths() {
+  const pages = await sanityClient.fetch(`
+    *[_type == 'customPages']{
+      name,
+      slug,
+      title,
+      mainContent
+    }
+  `)
+
+  return pages.map((page) => {
+    return {
+      params: {
+        slug: page.slug?.current || ''
+      },
+      props: { ...page }
+    }
+  })
+}
+
+const { name, title, mainContent } = Astro.props
+---
+
+<Layout title={title}>
+  <main class='custom-page'>
+    <div class='hero'>
+      <div class='wrapper'>
+        <div class='hero-sec-contain main-grid'>
+          <div class='left-part'></div>
+          <div class='hero-content'>
+            <h1 class='h1-small'>{title}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class='media-body'>
+      <div class='wrapper'>
+        <div class='media-contain main-grid'>
+          <div class='media-left'></div>
+          <div class='media-content'>
+            <PortableText value={mainContent} />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

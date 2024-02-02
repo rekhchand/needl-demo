@@ -1,0 +1,110 @@
+.media-page,
+.custom-page {
+  .hero-content {
+    max-width: 840px;
+    h1 {
+      font-size: 72px;
+    }
+
+    .author {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      img {
+        height: 32px;
+        width: 32px;
+        object-fit: cover;
+        border-radius: 20px;
+        background-color: #253632;
+      }
+
+      span {
+        font-size: 18px;
+        opacity: 0.6;
+      }
+    }
+
+    .hero-image {
+      margin-top: var(--gap-6);
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  .media-content {
+    padding-bottom: var(--gap-big-2);
+    max-width: 840px;
+
+    h2 {
+      font-size: 56px;
+    }
+    h3 {
+      font-size: 28px;
+    }
+    h2:not(:first-child),
+    h3:not(:first-child) {
+      margin-top: 48px;
+    }
+    img {
+      margin-top: 32px;
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    figcaption {
+      margin-top: 4px;
+      font-size: 16px;
+      opacity: 0.6;
+    }
+    a {
+      text-decoration: underline;
+      text-decoration-color: var(--green);
+      text-underline-offset: 3px;
+    }
+    p,
+    li {
+      font-size: 20px;
+      line-height: 1.4;
+      opacity: 0.85;
+    }
+    p:not(:first-child) {
+      margin-top: 20px;
+    }
+    li {
+      margin-top: 20px;
+      padding-left: 18px;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 11px;
+        height: 6px;
+        width: 6px;
+        background-color: #253632;
+        border-radius: 8px;
+      }
+    }
+    .content-soundcloud {
+      margin-top: 32px;
+      width: 100%;
+    }
+  }
+}
+
+.custom-page {
+  .hero-content {
+    padding-bottom: var(--gap-6);
+    border-bottom: 1px solid rgba(#000, 0.15);
+  }
+  .media-contain {
+    border-bottom: 1px solid rgba(#000, 0.15);
+  }
+}

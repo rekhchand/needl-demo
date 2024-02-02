@@ -2,7 +2,7 @@ import { BsFiles, BsFileText, BsGear } from 'react-icons/bs';
 /* eslint-disable */
 
 const hiddenDocTypes = listItem => ![
-  'homepage', 'mediapage', 'siteSettings'
+  'homepage', 'mediapage', 'siteSettings', 'customPages'
 ].includes(listItem.getId());
 
 export default (S) =>
@@ -30,6 +30,8 @@ export default (S) =>
               .child(S.document().title("Media page").schemaType('mediapage').id('mediapage')),
           ])
         ),
+
+      ...S.documentTypeListItems().filter(doc => doc.getId() === 'customPages'),
 
       S.listItem()
         .title("Site Settings")

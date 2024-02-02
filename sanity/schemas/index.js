@@ -2,6 +2,7 @@ import media from './media';
 import member from './member';
 import pageHome from './pageHome';
 import pageMedia from './pageMedia';
+import customPages from './customPages';
 import siteSettings from './siteSettings';
 
 import seo from './objects/seo';
@@ -33,6 +34,7 @@ export const schemaTypes = [
   member,
   pageHome,
   pageMedia,
+  customPages,
   siteSettings,
 
   seo,

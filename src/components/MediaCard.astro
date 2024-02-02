@@ -43,7 +43,7 @@ const { media, className } = Astro.props
   <div class='author'>
     <img
       src={urlForImage(media.author.pic).url()}
-      alt={media.title}
+      alt={media.author.name}
       width={getImageDimensions(media.author.pic).width}
       height={getImageDimensions(media.author.pic).height}
       loading='lazy'
