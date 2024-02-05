@@ -1,0 +1,89 @@
+---
+import Hero from '../components/Hero.astro'
+import Layout from '../components/Layout.astro'
+import '../css/jobspage.scss'
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    authorization:
+      'Bearer 975a4fdc824c1eedd3f7317a0f80abb06a538cb752a676ec26c40af2d80c1e7e9b46493d6b3d6d9514eb06666f7f80e819eae31827b91e7eea03b21a7309eedeef07f34fa9979887889f56fb39fe7bff603fc7d97054c99a1c6c366fee3fd37d6cf8cf8f76798c675a23bc4ee00e1155dfdf8daebcf3303e7b3d54c29b57647f'
+  }
+}
+const res = await fetch(
+  'https://app.loxo.co/api/martinsen-mayer/jobs?published=true&status=active',
+  options
+)
+  .then((response) => response.json())
+  .catch((err) => console.error(err))
+const allJobs = res.results
+console.log(allJobs[0])
+
+function validateText(str) {
+  var tarea = str
+  if (tarea.indexOf('http://') == 0 || tarea.indexOf('https://') == 0) {
+    return str
+  }
+  return null
+}
+---
+
+<Layout title='Needl.io | Latest jobs'>
+  <Hero
+    heroContent={{
+      title: 'Jobs',
+      para: 'Discover a world of career opportunities that can propel you to success while working with the industry’s leading experts.'
+    }}
+  />
+
+  <section class='jobs-main-sec sec-padding'>
+    <div class='wrapper-2'>
+      <div class='jobs-main-contain main-grid'>
+        <div class='left-part'>
+          <span class='sec-tag'>Filters:</span>
+          <div class='all-filters'>
+            <span class='filter active' data-type='all'>All media</span>
+          </div>
+        </div>
+        <div class='jobs-main-content'>
+          <div class='all-jobs'>
+            {
+              allJobs.map((job) => (
+                <a href={job.public_url} target='_blank' class='job-card'>
+                  <h3 class='h3-small'>{job.title}</h3>
+                  <p class='company'>{job.company.name}</p>
+                  <p class='company'>{job.job_type.name}</p>
+                  <p class='company'>{job.salary}</p>
+                  <p class='company'>{job.status.name}</p>
+                </a>
+              ))
+            }
+          </div>
+          <!-- <div class='all-jobs'>
+            {
+              allJobs.map((job) => (
+                <a href={job.public_url} target='_blank' class='job-card'>
+                  {validateText(job.company.logo_thumb_url) && (
+                    <div class='logo'>
+                      <img
+                        src={job.company.logo_thumb_url}
+                        alt={job.company.name}
+                      />
+                    </div>
+                  )}
+                  <div class='job-card-data'>
+                    <h3 class='h3-small'>{job.title}</h3>
+                    <p class='company'>{job.company.name}</p>
+                    <p class='company'>{job.job_type.name}</p>
+                    <p class='company'>{job.salary}</p>
+                  </div>
+                </a>
+              ))
+            }
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -2,7 +2,6 @@
 const { url } = Astro.props.node
 const correctedUrl = url.replace('https://', '')
 const newUrl = `https://w.soundcloud.com/player/?url=https%3A//${correctedUrl}`
-console.log(newUrl)
 ---
 
 <div class='content-soundcloud'>
