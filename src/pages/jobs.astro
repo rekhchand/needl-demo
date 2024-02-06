@@ -1,6 +1,9 @@
 ---
+import { Image } from 'astro:assets'
+import { timeSince } from '../utils/utitlities'
 import Hero from '../components/Hero.astro'
 import Layout from '../components/Layout.astro'
+import ArrowIco from '../images/ico-button.svg'
 import '../css/jobspage.scss'
 
 const options = {
@@ -12,21 +15,13 @@ const options = {
   }
 }
 const res = await fetch(
-  'https://app.loxo.co/api/martinsen-mayer/jobs?published=true&status=active',
+  'https://app.loxo.co/api/martinsen-mayer/jobs?published_at_sort=desc&published=true&status=active',
   options
 )
   .then((response) => response.json())
   .catch((err) => console.error(err))
 const allJobs = res.results
-console.log(allJobs[0])
-
-function validateText(str) {
-  var tarea = str
-  if (tarea.indexOf('http://') == 0 || tarea.indexOf('https://') == 0) {
-    return str
-  }
-  return null
-}
+// console.log(allJobs[0])
 ---
 
 <Layout title='Needl.io | Latest jobs'>
@@ -41,10 +36,13 @@ function validateText(str) {
     <div class='wrapper-2'>
       <div class='jobs-main-contain main-grid'>
         <div class='left-part'>
-          <span class='sec-tag'>Filters:</span>
-          <div class='all-filters'>
-            <span class='filter active' data-type='all'>All media</span>
-          </div>
+          <span class='sec-tag'>Current openings</span>
+          <!-- <div class='all-filters'>
+            <span class='filter active' data-type='all'>All jobs</span>
+            <span class='filter' data-type='article'>Full time</span>
+            <span class='filter' data-type='podcast'>Part time</span>
+            <span class='filter' data-type='event'>Remote</span>
+          </div> -->
         </div>
         <div class='jobs-main-content'>
           <div class='all-jobs'>
@@ -52,10 +50,38 @@ function validateText(str) {
               allJobs.map((job) => (
                 <a href={job.public_url} target='_blank' class='job-card'>
                   <h3 class='h3-small'>{job.title}</h3>
-                  <p class='company'>{job.company.name}</p>
-                  <p class='company'>{job.job_type.name}</p>
-                  <p class='company'>{job.salary}</p>
-                  <p class='company'>{job.status.name}</p>
+                  <div class='job-points'>
+                    {!job.company_hidden && (
+                      <p class='job-tag'>{job.company.name}</p>
+                    )}
+                    {(job.address || job.macro_address) && (
+                      <p class='job-tag'>
+                        {job.address}
+                        {job.macro_address}
+                      </p>
+                    )}
+                    {job.category?.name && (
+                      <p class='job-tag'>{job.category?.name}</p>
+                    )}
+                    <p class='job-tag'>{job.job_type.name}</p>
+                    {job.salary && <p class='job-tag'>{job.salary}</p>}
+                    {job.remote_work_allowed && (
+                      <p class='job-tag'>
+                        {job.remote_work_allowed ? 'Remote' : ''}
+                      </p>
+                    )}
+                    <p class='posted'>{timeSince(job.opened_at)}</p>
+                  </div>
+
+                  <div class='arrow-ico'>
+                    <Image
+                      src={ArrowIco}
+                      alt='Arrow'
+                      width={ArrowIco.width}
+                      height={ArrowIco.height}
+                      class='button-ico'
+                    />
+                  </div>
                 </a>
               ))
             }

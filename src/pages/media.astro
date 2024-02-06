@@ -57,10 +57,11 @@ const { heroCommon, seo } = mediaData
 <style lang='scss'>
   .all-filters {
     margin-top: 16px;
+    max-width: 240px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
 
     .filter {
       font-size: 16px;
@@ -91,3 +92,8 @@ const { heroCommon, seo } = mediaData
     gap: 64px 32px;
   }
 </style>
+
+<script>
+  import { mediaFilter } from '../utils/utitlities'
+  mediaFilter()
+</script>
