@@ -11,9 +11,10 @@ const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    authorization: `Bearer ${process.env.SANITY_PROJECT_ID}`
+    authorization: `Bearer ${import.meta.env.LOXO_KEY}`
   }
 }
+console.log(options.headers.authorization)
 const res = await fetch(
   'https://app.loxo.co/api/martinsen-mayer/jobs?per_page=100&published_at_sort=desc&published=true&status=active',
   options
