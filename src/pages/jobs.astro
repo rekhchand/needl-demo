@@ -11,12 +11,11 @@ const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    authorization:
-      'Bearer 975a4fdc824c1eedd3f7317a0f80abb06a538cb752a676ec26c40af2d80c1e7e9b46493d6b3d6d9514eb06666f7f80e819eae31827b91e7eea03b21a7309eedeef07f34fa9979887889f56fb39fe7bff603fc7d97054c99a1c6c366fee3fd37d6cf8cf8f76798c675a23bc4ee00e1155dfdf8daebcf3303e7b3d54c29b57647f'
+    authorization: `Bearer ${process.env.SANITY_PROJECT_ID}`
   }
 }
 const res = await fetch(
-  'https://app.loxo.co/api/martinsen-mayer/jobs?published_at_sort=desc&published=true&status=active',
+  'https://app.loxo.co/api/martinsen-mayer/jobs?per_page=100&published_at_sort=desc&published=true&status=active',
   options
 )
   .then((response) => response.json())

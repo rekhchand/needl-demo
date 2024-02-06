@@ -8,8 +8,8 @@ export default defineConfig({
   name: 'default',
   title: 'needl.io',
 
-  projectId: "uqvx2o8i",
-  dataset: "production",
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
 
   plugins: [structureTool({
     structure: deskStructure
